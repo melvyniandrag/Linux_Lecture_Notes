@@ -35,15 +35,17 @@ One more useful piece of information is that bash generally interprets values as
 For example :
 
 Comparison operators for numbers in bash are:
--eq
--ne
--gt
--ge 
+
+1. -eq
+2. -ne
+3. -gt
+4. -ge 
 etc.
 
 Comparison operators for strings are:
-=
-!=
+
+1. =
+2. !=
 etc.
 
 for more information see here https://www.tldp.org/LDP/abs/html/comparison-ops.html
@@ -150,7 +152,7 @@ cut splits an input. There are many ways to split the input. I'll show you two n
 echo "hello world" | cut -d " " -f1
 echo "hello world" | cut -c1-5
 
-i### 5/7 return values
+### 5/7 return values
 The only thing to know for now is the one I showed you $?. The return value of the last command. You can use this to verify that a command exited successfully or not. If not, you can see the error code it exited with!
 
 `echo $?`
