@@ -1,0 +1,23 @@
+bash functions
+-------------------
+https://www.linuxjournal.com/content/return-values-bash-functions
+If you feel like writing functions, go ahead.
+see functions.sh
+
+
+ cowsay
+------------------------------
+cowsay something
+
+tee
+_______________________________
+ls -l / | tee rootDirectory.txt 
+
+ vim rootDirectory.txt 
+
+tree
+___________________________
+apt-get install tree
+create a directory structure and then look at it with tree.
+
+
