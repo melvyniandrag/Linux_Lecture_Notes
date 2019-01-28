@@ -35,15 +35,17 @@ One more useful piece of information is that bash generally interprets values as
 For example :
 
 Comparison operators for numbers in bash are:
--eq
--ne
--gt
--ge 
+
+1. -eq
+2. -ne
+3. -gt
+4. -ge 
 etc.
 
 Comparison operators for strings are:
-=
-!=
+
+1. =
+2. !=
 etc.
 
 for more information see here https://www.tldp.org/LDP/abs/html/comparison-ops.html
