@@ -1,18 +1,26 @@
+# More About BASH
+
+## Introduction
+
 So the purpose of last week was to give you a flavor of what Linux is all about and some basic bash commands. We never even got into what bash is!
-Bash is a strange thing to describe. It's a language and also a unix shell, it's the language / tool you use to talk to your machine, run programs ,gather output, etc.. We learned a few commands like cp for copying files, rm for deleting files - and I forgot to tell you, to remove a directory you run "rm -r DIRECTORY" (example). There is also an rmdir command, but I never use it and have never seen anyone use it. rmdir expects the directory to be empty. "rm -r removes all the fies and the directory ( the -r means recursive )." The -r flag can be seen for other tools as well, like cp. Try to cp a directory, and you'll see it doesn't work. You have to use cp -r to copy the directory and its contents. We also learned about mv, wget, file, unzip, tar, gunzip, etc. We also learned a *bit* about vim, which is a powerful text editor. I wrote the entire mathtestmaker.com with vim, the python/django/latex/css/html/javascript, everything. It is very powerful and can be extended to do many things. Now today where going to go a bit deeper into linux, we'll learn a bit more about bash, about regular expressions, about linux processes, and we'll write a very useful script together.
+Bash is a strange thing to describe. It's a language and also a unix shell, it's the language / tool you use to talk to your machine, run programs ,gather output, etc.. We learned a few commands like `cp` for copying files, `rm` for deleting files - and I forgot to tell you, to remove a directory you run `rm -r DIRECTORY` (example). There is also an `rmdir` command, but I never use it and have never seen anyone use it. `rmdir` expects the directory to be empty. `rm -r` removes all the files and the directory ( the -r means recursive )." The -r flag can be seen for other tools as well, like `cp`. Try to `cp` a directory, and you'll see it doesn't work. You have to use `cp -r` to copy the directory and its contents. We also learned about `mv`, `wget`, `file`, `unzip`, `tar`, `gunzip`, etc. 
 
-For your assignment 1, I want to round out the topics you need to know to complete it. There are 5 "todos" in the assignment1_student.sh file in the Week1 directory in the class repository.
+We also learned a *bit* about vim, which is a powerful text editor. I wrote the entire mathtestmaker.com with vim, the python/django/latex/css/html/javascript, everything. It is very powerful and can be extended to do many things. Now today where going to go a bit deeper into linux, we'll learn a bit more about bash, about regular expressions, about linux processes, and we'll write a very useful script together.
+
+For your assignment 1, I want to round out the topics you need to know to complete it. There are 5 "TODOS" in the assignment1_student.sh file in the Week1 directory in the class repository.
 To complete this you need to know about 
-1. if
-7. bash variables
-2. md5sum
-3. cut
-4. return values in scripts
-5. wc
-6. pipes
 
-1/7. if
-************************
+## List of topics to cover
+
+1. if
+2. bash variables
+3. md5sum
+4. cut
+5. return values in scripts
+6. wc
+7. pipes
+
+### 1/7 if
 
 The bash syntax for if is 
 if [ condition ]
