@@ -20,4 +20,6 @@ ___________________________
 apt-get install tree
 create a directory structure and then look at it with tree.
 
-
+eval
+----------------------------
+eval "ls -l"

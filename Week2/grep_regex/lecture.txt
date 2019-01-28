@@ -1,0 +1,104 @@
+No we get into pattern matching in linux. A common way to match patterns in Linux is to 
+use * when using bash. Lets make a directory called dir, and put a bunch of files in it. 
+Lets name them:
+
+cow
+coffee
+core
+care
+apple
+
+and in each of these put some text.
+
+echo "hello" > cow
+echo "coffee" > coffee
+echo "boo" > core
+echo "help" > care
+echo "orange" > apple
+
+ 2162  mkdir dir
+ 2163  cd dir
+ 2164  echo "core" > core
+ 2165  echo "care" > care
+ 2166  ls
+ 2167  ls c?re
+ 2168  echo "superhero" > cape
+ 2169  ls
+ 2170  ls *
+ 2171  ls c*
+ 2172  ls ca?e
+ 2173  ls ca[rb]e
+ 2174  ls ca[rp]e
+ 2175  ls c*
+ 2176  history | tail -n15 >> ../lecture.txt 
+
+You can use these wild cards in the terminal. So, for example, if you want to get the number of lines in all of the files in your current directory you could
+
+cat * | wc -l
+
+Now lets look at some more advanced pattern matching used in Linux via the grep command. 
+Grep stands for Global regular expression print, it uses regular expressions to search for strings.
+You often use grep in combination with a pipe to search for something of interest in a pile of information.
+Now, grep is immensely useful, as we already saw last week. Last week we typed history | grep wget
+too look through our messy bash history to find exactly the command of interest to us, to see what files we downloaded in the past and to potentially download them again.
+
+But there is an old Linux saying about regular expressions. "You have to solve a problem and you decide to use a regular expression. Now you have two problems."
+
+https://opensourceforu.com/2012/06/beginners-guide-gnu-grep-basics/
+
+1. echo "hello world" | grep -i "WORLD"
+2. echo "hello world" | grep "WORLD"
+
+A poem I like:
+https://www.cc.gatech.edu/~spencer/poems/woods.txt
+
+Stopping by Woods on a Snowy Evening
+Robert Frost
+
+Whose woods these are I think I know.
+His house is in the village though;
+He will not see me stopping here
+To watch his woods fill up with snow.
+
+My little horse must think it queer
+To stop without a farmhouse near
+Between the woods and frozen lake
+The darkest evening of the year.
+
+He gives his harness bells a shake
+To ask if there is some mistake.
+The only other sound's the sweep
+Of easy wind and downy flake.
+
+The woods are lovely, dark and deep,
+But I have promises to keep,
+And miles to go before I sleep,
+And miles to go before I sleep.
+
+You can wget the poem
+
+We are going to cover a bunch of grep options to pick apart this poem.
+
+1. -i -> grep -i HARNESS woods.txt
+2. -w -> grep -w arness; grep -wi Harness 
+3. -v -> grep -v arness
+4. Move the file to a sub directory, then grep with -r -> mkdir poem; mv woods.txt poem; grep -r arness *
+5. -n gives line numbers for matches
+6. grep can match lines before, after, and both. grep -A1 arness woods.txt; grep -B1 arness woods.txt; grep -C3 arness woods.txt
+7. list files containing the match: -l -> grep -l arness *; remember if we see any irrelevant error messages from grep, we can redirect them to the ether. grep -l arness * 2> /dev/null
+
+e.g.
+$grep -l arness *
+grep: dir: Is a directory
+lecture.txt
+grep: poem: Is a directory
+woods.txt
+
+BUT
+$grep -l arness * 2>/dev/null
+lecture.txt
+woods.txt
+
+Ah, but we have yet to get to regular expressions!
+
+
