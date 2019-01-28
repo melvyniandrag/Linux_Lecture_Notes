@@ -1,3 +1,19 @@
+xargs
+-------------------------------------
+Needed for homework!
+Accepts a pipe and performs the indicated operation on all the lines given via standard in.
+
+E.g. 
+
+$ cat FILENAME
+a
+b
+c
+$ cat FILENAME | xargs touch
+$ ls
+a b c
+
+
 bash functions
 -------------------
 https://www.linuxjournal.com/content/return-values-bash-functions

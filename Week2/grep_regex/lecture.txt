@@ -101,4 +101,38 @@ woods.txt
 
 Ah, but we have yet to get to regular expressions!
 
+Regular expressions are for pattern matching.
 
+https://www.gnu.org/software/grep/manual/html_node/Basic-vs-Extended.html
+In basic regular expressions the meta-characters ‘?’, ‘+’, ‘{’, ‘|’, ‘(’, and ‘)’ lose their special meaning; instead use the backslashed versions ‘\?’, ‘\+’, ‘\{’, ‘\|’, ‘\(’, and ‘\)’.
+
+The period (.) matches any single character.
+? means that the preceding item is optional, and if found, will be matched at the most, once.
+* means that the preceding item will be matched zero or more times.
++ means the preceding item will be matched one or more times.
+{n} means the preceding item is matched exactly n times, while {n,} means the item is matched n or more times. {n,m} means that the preceding item is matched at least n times, but not more than m times. {,m} means that the preceding item is matched, at the most, m times.
+
+That's it! So 
+
+a.txt
+--------------
+a?
+a+
++
+?
+a
+
+try:
+grep . a.txt etc.
+
+
+^ (Caret)   =   match expression at the start of a line, as in ^A.
+$ (Question)    =   match expression at the end of a line, as in A$.
+\ (Back Slash)  =   turn off the special meaning of the next character, as in \^.
+[ ] (Brackets)  =   match any one of the enclosed characters, as in [aeiou]. Use Hyphen "-" for a range, as in [0-9].
+[^ ]    =   match any one character except those enclosed in [ ], as in [^0-9].
+. (Period)  =   match a single character of any value, except end of line.
+* (Asterisk)    =   match zero or more of the preceding character or expression.
+\{x,y\} =   match x to y occurrences of the preceding.
+\{x\}   =   match exactly x occurrences of the preceding.
+\{x,\}  =   match x or more occurrences of the preceding.
