@@ -1,6 +1,0 @@
-boot
-boots
-machine
-hello
-cat
-cate
