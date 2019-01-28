@@ -152,7 +152,7 @@ cut splits an input. There are many ways to split the input. I'll show you two n
 echo "hello world" | cut -d " " -f1
 echo "hello world" | cut -c1-5
 
-i### 5/7 return values
+### 5/7 return values
 The only thing to know for now is the one I showed you $?. The return value of the last command. You can use this to verify that a command exited successfully or not. If not, you can see the error code it exited with!
 
 `echo $?`
