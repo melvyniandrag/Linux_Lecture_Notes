@@ -2,4 +2,5 @@ import time
 import sys
 
 while True:
-    sys.stdin.read(1)
+    x = sys.stdin.read()
+    print("received {}".format(x))

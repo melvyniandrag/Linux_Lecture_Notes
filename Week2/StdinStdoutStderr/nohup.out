@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "readstdin.py", line 5, in <module>
+    sys.stdin.read(1)
+IOError: [Errno 9] Bad file descriptor
