@@ -30,4 +30,71 @@ Now type 'jobs' and you'll see its not there. There is more to be said about thi
 
 You can send commands to a running process to stop and start it if you want. You can switch the running programs from running in the foreground to running in the background.
 
+But before we get ahead of ourselves, lets talk about something you are going to do every single day. This is essential, and we talked about it briefly in the last class when some folks asked about it, and I had to fight my urge to start talking about it so I just brushed it off.
 
+Ctrl+Z is to stop a process, ctl+C is to kill it for good, to terminate it. Stopped jobs sit there and wait for you to start them up, killed jobs are done for good. Very important. Don't forget this! Lets look at a little example. There is a python script called "incrementNumbers.py" here, we will start it and put it in the background. First lets look at it and see what it does - the script will just write a number to the terminal every few seconds.
+
+[demonstrate script]
+
+When we run the program with python incrementNumbers.py, well see that it starts periodically writing a number. We can sto pit with ctrl + z
+Then when we type jobs, we see it is a stopped job. We can bring it back into the foreground with fg % jobid. Now we can stop it again with ctrl+z. Now we can send it to the background with bg %job id. The job will keep running, but now we have control of the terminal. but its periodically bothering us with its output. We can stop it again with kill -STOP pid or kill -SIGSTOP or kill -SIGTSTP . There are difference between these, but we won't go into it just yet. To resume it type kill -CONT pid
+
+As an experiment now, start a python incrementNumber process and let it get to 2. Then stop it with ctl + z. Then start another and let it get to 10. The start the first one with fg %1. Then stop it with ctrl + z. Then start the second one with fg %2. See how they pick up where they left off?
+
+----------ps---------------
+Here is a real powerhouse for dealing with processes.
+https://shapeshed.com/unix-ps/
+
+ps gives the processes in the current shell. 
+type
+ps
+then start a bunch of these increment number programs and send the output to /dev/null
+
+python incrementNumbers.py >/dev/null &
+python incrementNumbers.py >/dev/null &
+python incrementNumbers.py >/dev/null &
+python incrementNumbers.py >/dev/null &
+python incrementNumbers.py >/dev/null &
+python incrementNumbers.py >/dev/null &
+
+ps
+
+now you see all the processes associated with this shell
+pkill python to kill them all at once. We saw some signals before like STOP and CONT, pkill sends the -SIGTERM signal which is signal #15, and not the dreaded #9. More about these signals in a second, we already saw a few before but, as always, theres much mre to say.
+
+now ps again
+they are eigther gone, or reporting that they have been terminated.
+
+
+To see all the processes running on your system type:
+
+either 
+ps -e
+or 
+ps -aux
+
+to see processes by user ps -u USERNAME
+
+to see processes by group ps -g GROUPNAME - but whats a group?? We'll cover that in a few weeks.
+
+Exercise:
+How many processes am I running? 
+
+ps -u melvyn | wc -l
+
+How many root processes are running? 
+
+ps -u root | wc -l
+
+This is important information about running processes on your machine that can be used for all kinds of system administration tasks.
+
+One more funny thing  I thought to do with the top command, talking about processes. Lets make a real resource hogging process and see it being greedy with top
+
+while(True):
+    pass
+
+returning to our discussion about about the terminate signals, we saw two ways to kill a process. One was with CTRL+C before and now we say pkill program name ( which kills all instances of th eprogram). You can terminate a program with the kill signal with 
+kill -KILL pid
+kill -TERM pid
+
+pkill sends the term signal, which is signal number 15. Ctrl + C sends the signal SIGINT, signal number 2. You may notice that if you try to Ctrl + C a program it doesnt respond. sigint tries to interrupt the process and says "excuse me, you should stop now". But sometimes you need to be more direct so you send the sigterm -TERM signal, signal number 15, as with pkill. But sometimes the process just wont listen so you bring out the bazooka and blast it with the -KILL signal, the dreaded number 9. How the process / operating system goes about handling these signals is interesting and will be discussed later if we have time to write a simple program to handle signals, but we probably wont have time. You'd need to grab a book on C programming and look into signal handlers.
