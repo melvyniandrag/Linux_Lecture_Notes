@@ -23,10 +23,12 @@ To complete this you need to know about
 ### 1/7 if
 
 The bash syntax for if is 
+```
 if [ condition ]
 then
  command
 fi
+```
 
 One more useful piece of information is that bash generally interprets values as strings, unless they can be used as numbers, in which case it assumes they are numbers. https://www.tldp.org/LDP/abs/html/untyped.html.
 
