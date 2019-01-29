@@ -9,6 +9,7 @@ https://www.tldp.org/LDP/abs/html/arrays.html
 
 # [ ] vs [[ ]] vs test
 https://www.tldp.org/LDP/abs/html/testconstructs.html
+
 https://wiki.bash-hackers.org/commands/classictest
 
 # for loops
