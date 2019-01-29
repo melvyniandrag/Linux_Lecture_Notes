@@ -5,13 +5,13 @@ So we are learning it piece by piece, and when you have a free week or so to rea
 whole book you will be well prepared to skim the vast majority of it.
 
 # Arrays
+https://www.tldp.org/LDP/abs/html/arrays.html
 
-# [ ] vs [[ ]]
+# [ ] vs [[ ]] vs test
+https://www.tldp.org/LDP/abs/html/testconstructs.html
 
 # for loops
 
 # while loops
-
-# test
 
 # .bashrc, /etc/profile.rc
