@@ -23,6 +23,7 @@ To complete this you need to know about
 ### 1/7 if
 
 The bash syntax for if is 
+
 ```
 if [ condition ]
 then
@@ -31,8 +32,6 @@ fi
 ```
 
 One more useful piece of information is that bash generally interprets values as strings, unless they can be used as numbers, in which case it assumes they are numbers. https://www.tldp.org/LDP/abs/html/untyped.html.
-
-For example :
 
 Comparison operators for numbers in bash are:
 
@@ -51,7 +50,7 @@ etc.
 for more information see here https://www.tldp.org/LDP/abs/html/comparison-ops.html
 
 ```
-# an arithmetic comaprison
+# an arithmetic comparison
 x1=1
 x2=2
 if [ $x1 -lt $x2 ]        
@@ -148,9 +147,30 @@ Something!
 
 So depending on whether or not you need the variable in subshells / subprocesses, that determines whether or not you should export it. Why should you *not* export a variable. I can think of a few reasons why you wouldn't, though I haven't come across a situation like the one I'm dreaming up. So it's up to you and your use case whether you should export or not. 
 
+I said the visibility affects subprocesses, not just subshells.
+So try the same example as above, but try a python process.
+
+```
+$val=1
+$python
+>>>>import os
+>>>>os.environ["val"]
+ERROR!
+```
+
+And then try with export:
+
+```
+$export val=1
+$python
+>>>>import os
+>>>>os.environ["val"]
+'1'
+```
+
 ### 3/7 md5sum
 
-`md5sum file`. I told you what an md5sum is. to revisit it, md5sum computes a 128 bit hash of a file. How many bits in a byte? (8) so how many bytes should we expect the hash to take up? 128/8 = 32. We'll revisit this in a minute. Just remember for now that `md5sum filename` returns the md5 sum hash, some whitespace, and then the filename
+`md5sum file`. I told you what an md5sum is. to revisit it, md5sum computes a 128 bit hash of a file. How many bits in a byte? (8) so how many bytes should we expect the hash to take up? 128/8 = 16. We'll revisit this in a minute. Just remember for now that `md5sum filename` returns the md5 sum hash, some whitespace, and then the filename
 
 ### 4/7 cut
 
@@ -182,10 +202,20 @@ Why 12 bytes? An ASCII character takes up one byte. Whats an ascii character? I'
 To get rid of the newline, you can use an echo option ( -n ) that may or may not be available on your machine
 
 ```
-$ echo -n "hello" > log
-wc log
+$echo -n "hello" > log
+$wc log
 0 1 5
 ```
+
+Pop quiz <make one student put hands up off the keyboard> - what's the output of this? 
+```
+$echo "hello" > log
+$wc log
+```
+
+???
+
+The output should be `1 1 6`
 
 ### 7/7 pipes
 
@@ -207,7 +237,7 @@ So why are there 33 bytes and not 32?? There is a newline character on the end!
 try this command, not an essential one, but useful - the more you know! 
 
 ```
-md5sum lecture.txt | cut -c1-32 > log
-cat log
-hexdump -c log
+$md5sum lecture.txt | cut -c1-32 > log
+$cat log
+$hexdump -c log
 ```
