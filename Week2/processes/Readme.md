@@ -1,6 +1,6 @@
 # Linux Processes
 
-##Intro
+## Intro
 
 In this section we're going to talk about processes in linux. Processes are just running programs.
 When the operating system starts up there is a process called init that brings up all the other processes on the system and lets you do work.
@@ -64,18 +64,22 @@ https://shapeshed.com/unix-ps/
 
 ps gives the processes in the current shell. 
 type
+
+```
 ps
+```
+
 then start a bunch of these increment number programs and send the output to /dev/null
 
+```
 python incrementNumbers.py >/dev/null &
 python incrementNumbers.py >/dev/null &
 python incrementNumbers.py >/dev/null &
 python incrementNumbers.py >/dev/null &
 python incrementNumbers.py >/dev/null &
 python incrementNumbers.py >/dev/null &
-
 ps
-
+```
 now you see all the processes associated with this shell
 pkill python to kill them all at once. We saw some signals before like STOP and CONT, pkill sends the -SIGTERM signal which is signal  ( which number?? - ask class. remind to use kill -l) #15, and not the dreaded #9. More about these signals in a second, we already saw a few before but, as always, theres much mre to say.
 
@@ -86,13 +90,13 @@ they are eigther gone, or reporting that they have been terminated.
 To see all the processes running on your system type:
 
 either 
-ps -e
+`ps -e`
 or 
-ps -aux
+`ps -aux`
 
-to see processes by user ps -u USERNAME. For example, try ps -u $(whoami)
+to see processes by `user ps -u USERNAME`. For example, try `ps -u $(whoami)`
 
-to see processes by group ps -g GROUPNAME - but whats a group?? We'll cover that in a few weeks.
+to see processes by group `ps -g GROUPNAME` - but whats a group?? We'll cover that in a few weeks.
 
 Exercise:
 How many processes am I running? 
