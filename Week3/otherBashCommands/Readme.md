@@ -17,3 +17,4 @@ watch -n1 date
 ```
 
 This will keep updating the time in the terminal every second.
+Try stopping watch with CTRL+Z and restarting it with fg. Try killing it with CTRL+C
