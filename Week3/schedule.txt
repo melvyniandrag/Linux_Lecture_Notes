@@ -1,0 +1,4 @@
+bash commands
+cron
+users
+git
