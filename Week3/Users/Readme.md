@@ -266,7 +266,27 @@ hello world
 ```
 
 ### Permissions and directories
-It is pretty clear what the permissions mean for a file. read means you can read it, write means you can write, execute means you can run it as an executable program. 
+It is pretty clear what the permissions mean for a file. read means you can read it, write means you can write, execute means you can run it as an executable program. What do permissions mean for a directory?
+
+1. read means the contents of the directory can be listed
+2. write means files can be created, destroyed, and renamed in the directory
+3. execute means the directory can be entered.
+
+```
+user@machine$ mkdir a
+user@machine$ chmod 700 a
+user@machine$ chmod u-r a
+user@machine$ ls a
+Permission Denied
+user@machine$ chmod u=rx a
+user@machine$ cd a
+user@machine$ touch foo.txt
+Permission Denied
+user@machine$ cd ..
+user@machine$ chmod 600 a
+user@machine$ cd a
+Permission Denied
+```
 
 ### chown
 The chown command is for changing ownership.
@@ -278,7 +298,12 @@ The chown command is for changing ownership.
 ### Hint at something more
 Stickybit, setuid, setgid.
 [ Not discussed in this lecture, this is for later ]
+There are more bits that can be adjusted for files that give files interesting properties.
 
 ## User limits
 
 No time to cover this now. You can configure your system to limit the resources (e.g. cpu load, ram usage) available to a particular user.
+
+## Going further
+
+For more information about these topics, feel free to read chapter 6 of the Evi Nemeth Unix/Linux Sysadmin book.
