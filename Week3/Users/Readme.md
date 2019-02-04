@@ -139,17 +139,39 @@ N+1
 
 ### Deleting Groups
 
+Just as easy as removing a user.
+
 ```
 user@machine$ sudo groupdel njcu
 ```
 
-### Adding yourself to a group
+### Adding a user to a group
 
+```
+user@machine$ sudo usermod -a -G GROUP USER
+```
 
+or use
+
+```
+user@machine$ sudo adduser USER GROUP
+```
+
+as we did before with adding the new user to the sudo group.
+
+### Deleting a user from a group
+
+You can delete a user from a group just as you can add a user to a group.
+
+```
+user@machine$ sudo deluser USER GROUP
+```
 
 ## Permissions
 
 ### chmod
+
+
 
 ### chgrp
 
