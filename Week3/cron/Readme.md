@@ -78,9 +78,25 @@ Depending on your system you might have the Paul Vixie's cron program installed,
 ## cron logs
 You can view your logs to see the output of your cron jobs in `/var/log/syslog`, or, on a systemd based system, you can also run `journalctl`. You can grep in these results for cron, i.e. `cat /var/log/syslog | grep -i cron` and `journalctl | grep -i cron`.
 
-cron can also be configured to email you information about your cron jobs. This is not a hard task, and if you're interested you can google for how to do it. We'll cover it in class if there is time.
+If you try to run an impossible cronjob, e.g. the user doesn't have the proper permissions, there are many ways for you to configure the system to let you know about the errors. Consider the case where you want to run `echo hello > /root/hello.txt` from a cronjob for a non root user. This will generally write an error out in your terminal! Try it.
 
-?? How to find standard error output from a cron job that failed?
+```
+nonRoot@server$ echo "hello" > /root/hello.txt
+Blah blah Permission Denied: Blah blah
+```
+
+You can configure cron in a number of ways to log the error. One way is to have cron send you an email. 
+We'll use postfix for this.
+
+```
+apt-get install postfix
+```
+
+Then select the local option.
+
+Then configure an impossible cron job.
+
+Then look in `/var/spool/mail/USERNAME`. You will see the error there. With proper configuration this will be sent out to a supplied email address.Configuring the machine to do this is an exercise left to the reader. If there is time we may cover it later, but suffice it to say that it is possible.
 
 ## at command. 
 I've seen the at command less in the wild than the cron command. Still, you may be asked about it in interviews, or may wish to use it for something or other. There are a variety of ways to use it. I'll just show you one. 
