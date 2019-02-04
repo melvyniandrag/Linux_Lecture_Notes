@@ -169,11 +169,111 @@ user@machine$ sudo deluser USER GROUP
 
 ## Permissions
 
+All linux files have permissions, an owner, and a group. You can see these characteristics when you type `ls -l`.
+
+```
+user@machine$ touch sampleFile.txt
+user@machine$ ls -l
+...
+-rw-rw-r-- 1 melvyn melvyn    0 Feb  4 07:30 sampleFile.txt
+...
+```
+
+The owner is 'melvyn', the group is 'melvyn' and the permissions are 'rw-rw-r--'. There is a preceding dash, we'll 
+discuss that a bit later, it has very fascinating properties, but at this point in the class we aren't ready to appreciate what it does yet.
+
+Linux/Unix do not support editing permissions for files on a per user basis. Instead, the permissions can 
+be set for the owner, the group, and everyone else. In the permission bits for sampleFile.txt we see `rw-rw-r--`.
+This means that the file owner can read and write ( `rw-.....` ), the other group members can read and write ( `...rw-...` ) and everyone else
+can only read (`......r-0`).
+
 ### chmod
+The chmod command is for changing permissions. Linux files have permission bits to specify whether they are readable, writable or executable.
+There are two ways to run the command, you can pass it numeric arguments or you can pass it character arguments. For the numeric syntax, you need to remember that 
 
+2^0 = 1 <-> executable
+2^1 = 2 <-> write
+2^2 = 4 <-> read
 
+You can remember which one is which by remembering that r is to the left in the permission triplet and 2^2 is to the left in the binary representation of the number. Not sure if this helps, you can think about it to find a memorization technique that works for you. I was never taught such a technique and devised this one on my own.
+
+So to change the permissions of a file to only readable for all users we say 
+
+```
+user@machine$ chmod 444 sampleFile.txt
+```
+
+To change permissions on the file to read and writable for the owner only, we run
+
+```
+user@mchine$ chmod 644 sampleFile.txt
+```
+
+To make the file read and writable by the owner, but deny everyone else all rights, we run
+
+```
+user@machine$ chmod 600 sampleFile.txt
+```
+
+To verify that no one but the owner has rights to this file you can log in as the other user you created earlier and try to `cat` the file now.
+
+```
+user@machine$ sudo su - thenewuseryouadded
+thenewuseryouadded@machine$ cat sampleFile.txt
+blah blah Permission Denied: blah blah
+```
+
+The mnemonic syntax for chmod uses characters instead of these permission numbers built of sums of 1s, 2s and 4s.
+
+There is another 10 minutes that can be spent discussing this syntax, but I'll  just show you really quick. `u` means 'user', `g` means 'group', and `o` means 'other' in what follows.
+
+```
+user@machine$ chmod u+x sampleText.txt
+user@machine$ chmod g=rw sampleText.txt
+user@machine$ ls -l
+...
+-rwxrw---- other_information_here sampleFile.txt
+```
+
+`chmod` also has a recursive option that can be used to recursively apply permissions.
+
+```
+user@machine$ mkdir a/b
+user@machine$ touch a/foo.txt
+user@machine$ touch a/b/bar.txt
+user@machine$ chmod -R 700 a
+```
+
+Then you can have a look inside a at the files and directories there.
+
+We haven't written executable scripts yet, we'll take a minute to do that now.
+
+```
+user@machine$ vim firstScript.sh
+user@machine$ cat firstScript.sh
+#!/bin/bash
+
+echo "hello world"
+```
+
+The first line is called a shabang line, and that specifies which interpreter to use when executing the script. We want to run a bash script.
+Then we can make it executable and run it like this:
+
+```
+user@machine$ chmod u+x firstScript.sh
+user@machine$ ./firstScript.sh
+hello world
+```
+
+### Permissions and directories
+It is pretty clear what the permissions mean for a file. read means you can read it, write means you can write, execute means you can run it as an executable program. 
+
+### chown
+The chown command is for changing ownership.
 
 ### chgrp
+
+
 
 ### Hint at something more
 Stickybit, setuid, setgid.
