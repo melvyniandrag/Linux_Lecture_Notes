@@ -291,14 +291,30 @@ Permission Denied
 ### chown
 The chown command is for changing ownership.
 
+You run 
+
+```
+user@machine$ chown USER FILE
+```
+
+If time, do an exercise here where we set permission to 600, then try to read.
+Then change owner, and try to read. 
+
 ### chgrp
 
+Like chown, you can change the group.
 
+```
+chgrp GROUP FILE
+```
+
+Try it in class with a file. 
+
+Use `ls -l` to inspect the file before and after the change.
 
 ### Hint at something more
 Stickybit, setuid, setgid.
-[ Not discussed in this lecture, this is for later ]
-There are more bits that can be adjusted for files that give files interesting properties.
+These are cool things about file ownership and permissions that we'll talk about later. Really cool, but not needed yet.
 
 ## User limits
 
