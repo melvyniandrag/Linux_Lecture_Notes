@@ -18,4 +18,10 @@ Port 22
 22 is the default port.
 
 # Putty
-In this exercise we will
+In this exercise we will use putty to connect to some machines.
+
+# Server <-> server 
+Use ssh to connect two cloud machines
+
+#sftp
+Secure file transfer protocol. Send get/send some files between cloud machines. I think on windows you need  tool like winSCP, but I'm not sure I haven't had a reason to use windows for this kind of task yet.
