@@ -1,5 +1,7 @@
 # Other Bash Commands
 
+We've covered a good amount of bash commands so far in this class, there's still a few more cool Unix/Linux tools to talk about, but you're quite knowledgable about bash/Linux already. Today I'm going to add a few more programs to your toolkit.
+
 ## date
 
 What's the date/time?
