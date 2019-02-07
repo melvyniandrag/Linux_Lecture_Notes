@@ -7,7 +7,9 @@ for cron is system backups. If you are a system administrator, or just concerned
 on your machine at home, you may run a cronjob at 12 Noon every sunday. You would add a cron job
 for the root user such as:
 
+```
 * 12 * * 0 tar -cvpzf backup.tar.gz --exclude=/backup.tar.gz --one-file-system / 
+```
 
 You can add cronjobs with the crontab command. We will look into the meaning of the above 
 command now.
