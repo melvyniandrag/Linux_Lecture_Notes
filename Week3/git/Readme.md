@@ -1,3 +1,5 @@
+Nota Bene: This class has been somewhat deep, with lots of material brought up. Depending on how the class is responding and demonstrating knowledge of the class we will either integrate git or not integrate it into the homework.
+
 # Git
 
 ## Introduction
