@@ -312,6 +312,18 @@ Try it in class with a file.
 
 Use `ls -l` to inspect the file before and after the change.
 
+## TODO!!
+MAKE SURE TO ADD SOME EXAM QUESTIONS ABOUT HOW TO SET FILE/DIRECTORY PERMISSIONS/OWNERSHIP/GROUPMEMBERSHIP/ETC FOR CERTAIN USE CASES.
+
+E.G. EXAM QUESTION:
+SHOW TWO COMMANDS TO SET PERMISSIONS ON FILE X.SH SO THAT THE OWNER CAN RWX, THE OTHER GROUP MEMBERS CAN RW, AND ALL OTHER SYSTEM USERS CAN ONLY R?
+
+E.G. EXAM QUESTION2:
+WHY CAN'T /HOME/USER/FILE.SH BE RUN BY USER2? 
+LS -L /HOME -> RW------- /HOM/USER
+LS -L /HOME/USER RWXRWXRWX /HOME/USER/FILE.SH
+ETC.:
+
 ### Hint at something more
 Stickybit, setuid, setgid.
 These are cool things about file ownership and permissions that we'll talk about later. Really cool, but not needed yet.
