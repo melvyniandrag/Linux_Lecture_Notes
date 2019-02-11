@@ -216,12 +216,6 @@ https://askubuntu.com/questions/385528/how-to-increment-a-variable-in-bash
 
 http://tldp.org/LDP/Bash-Beginners-Guide/html/sect_09_02.html
 
-# [ ] vs [[ ]] vs test
-https://www.tldp.org/LDP/abs/html/testconstructs.html
-
-https://wiki.bash-hackers.org/commands/classictest
-
-
 # alias
 
 You use the alias command to change the names of system commands, implement system commands, etc. 
@@ -275,3 +269,38 @@ https://www.tldp.org/LDP/abs/html/arrays.html
 In general, the whole 'abs' - 'advanced bash scripting' guide is a great read!
 
 I've maybe used a BASH array twice in my career, but that's probably because of my career path. I know the arrays are out there, and you shoulld know they are out there too.
+
+# [ ] vs [[ ]] vs test
+
+There are at least three ways to write ifs to check for conditions in bash.
+
+You can write 
+
+```
+if [ 1 -eq 1 ]
+then 
+    echo "true"
+else
+    echo "false"
+fi
+```
+
+You can also write
+
+```
+if test 1 -eq 1
+then 
+    echo "true"
+else
+    echo "false"
+fi
+```
+
+The previous two are standard sh commands. The [[ ]] construct is a bash extension. It permits you to do more than the [] and test constructs allow, but it's not portable. 
+
+https://www.tldp.org/LDP/abs/html/testconstructs.html
+
+https://wiki.bash-hackers.org/commands/classictest
+
+
+
