@@ -1,5 +1,18 @@
-In class, set up a git server with the class. This will be their homework assignment, just go through it one time with them to make sure they can do it.
+Spend an hour working on a github repo. The purpose of the class is to get familiar with the git work flow. Each student needs to complete 3 pull requests.
 
-The purpose of this classwork is two fold - one we get more knowledge of git. More importantly, we gain experience setting up a linux machine as a server that does stuff besides simply being a desktop pc. You see me using a laptop running ubuntu, and Linux is great as a desktop os.  I've shown you the little linux pcs I program for my other job, where Linux is an embedded OS, a little bit of logic that helps manage the functioning of an industrial device. (Bring RPi game rig to class). It can be used for gaming too. Linux is just an operating system. You will at times want to configure it as a server to host websites, or as a database server, as a proxy server, or - as we'll see now - Linux can be used as a server to host version control software. 
+* make the repo
+* make three sub directories
+  1. language  / 10 line program in your favorite programming language
+  2. distro    / my favorite linux distro and why
+  3. bash      / a 10 line bash program that does anything
+  
+Class flow is thus:
+student forks the repo. 
 
+for subdir in [ language, distro, bash ]:
+ * Commits a file subdir/myname/prog.extension to the repo
+ * Makes a pull request. 
+ * tell me about the pr
+ * I merge the pr
+When all three prs are merged, student can leave or stay and help others.
 
