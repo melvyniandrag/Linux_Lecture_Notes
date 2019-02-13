@@ -6,6 +6,38 @@ whole book you will be well prepared to skim the vast majority of it.
 
 Some of the things I'm going to show you now may seem stupid or useless! But rest assured that what I'm telling you is important to your career as a computer programmer. There is a datastructure in python called a dictionary, it's more generally known as a map in computer science jargon. When I was reading my first python book about a decade ago I saw this data structure and thought it was silly and couldn't fathom why you would use this dumb thing. Fast forward ten years and I use dictionaries almost every day and can talk to you in depth about the lowlevel details of how they work, why they work, when they should be used, and when they shouldnt, etc.. So don't brush me off. Even if you don't understand all I say, I guess I hope you appreciate me planting the seed in your head about these important ideas.
 
+# [ ] vs [[ ]] vs test
+
+There are at least three ways to write ifs to check for conditions in bash.
+
+You can write 
+
+```
+if [ 1 -eq 1 ]
+then 
+    echo "true"
+else
+    echo "false"
+fi
+```
+
+You can also write
+
+```
+if test 1 -eq 1
+then 
+    echo "true"
+else
+    echo "false"
+fi
+```
+
+The previous two are standard sh commands. The [[ ]] construct is a bash extension. It permits you to do more than the [] and test constructs allow, but it's not portable. 
+
+https://www.tldp.org/LDP/abs/html/testconstructs.html
+
+https://wiki.bash-hackers.org/commands/classictest
+
 # Arrays
 This article starts out by saying:
 "the intent of this article is to avoid having to RTFM", it's a great read!
@@ -210,6 +242,10 @@ i=$[$i+1]
 done
 # 0 1 2
 ```
+
+Another usage of test/while:
+https://unix.stackexchange.com/questions/128204/what-does-while-test-gt-0-do
+
 I increment the variable i in this loop, but this isn't of too much interest to us at this moment. In the notes I have a link that explains the multitude of ways to increment a variable in bash. It's not worth it to us right now to spend a half hour discussing the ins and outs, pros and cons, etc. The important message here is that bash, like many other languages supports a loop called a while loop.
 
 https://askubuntu.com/questions/385528/how-to-increment-a-variable-in-bash
@@ -269,38 +305,6 @@ https://www.tldp.org/LDP/abs/html/arrays.html
 In general, the whole 'abs' - 'advanced bash scripting' guide is a great read!
 
 I've maybe used a BASH array twice in my career, but that's probably because of my career path. I know the arrays are out there, and you shoulld know they are out there too.
-
-# [ ] vs [[ ]] vs test
-
-There are at least three ways to write ifs to check for conditions in bash.
-
-You can write 
-
-```
-if [ 1 -eq 1 ]
-then 
-    echo "true"
-else
-    echo "false"
-fi
-```
-
-You can also write
-
-```
-if test 1 -eq 1
-then 
-    echo "true"
-else
-    echo "false"
-fi
-```
-
-The previous two are standard sh commands. The [[ ]] construct is a bash extension. It permits you to do more than the [] and test constructs allow, but it's not portable. 
-
-https://www.tldp.org/LDP/abs/html/testconstructs.html
-
-https://wiki.bash-hackers.org/commands/classictest
 
 
 
