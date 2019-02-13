@@ -34,6 +34,26 @@ fi
 
 The previous two are standard sh commands. The [[ ]] construct is a bash extension. It permits you to do more than the [] and test constructs allow, but it's not portable. 
 
+One thing it can do is match regular expressions to strings.
+
+```
+$ var=aaab
+$ if [[ $var == *ab ]]; then echo "match"; fi
+match
+```
+
+but without the extra bracket:
+
+```
+$ var=aaab
+$ if [ $var == *ab ]; then echo "match"; fi
+$
+$ #no match
+```
+
+More interesting uses of if:
+https://unix.stackexchange.com/questions/306111/what-is-the-difference-between-the-bash-operators-vs-vs-vs
+
 https://www.tldp.org/LDP/abs/html/testconstructs.html
 
 https://wiki.bash-hackers.org/commands/classictest
@@ -206,7 +226,7 @@ done
 # 10 15
 ```
 
-# Populating arrays
+# Populating arrays ( Can omit in class. Come back if time. )
 
 Just a quick note about populating arrays
 
