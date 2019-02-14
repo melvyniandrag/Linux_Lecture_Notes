@@ -1,1 +1,15 @@
+5 - drives / filesystems
+6 - programming C / C++ / system calls / strace
+7 - web programming
+8 - networking
+9 - midterm / awk / sed / ssh keys / hashes / passwords in Linux / git server set up
+10 - systemd / sysv / bootloader / startup / shutdown, change run levels
+11 - virtualization/containerization ( Docker, qemu ) mention of Virtual Box / VMWare
+12 - RAID + LVM
+13 - PAM, manage user privileges, manage system wide profiles, ntp for managing time, 
+14 - chroot / building software from source / symlinking, networking part II
+15 - Kernel / driver development
 
+# If time PGP + Key signing party
+
+# Home
