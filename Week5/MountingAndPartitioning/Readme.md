@@ -188,4 +188,45 @@ The stuff is still there, if you unmount the drive you will see the files there 
 There may be ways to change this behavior, but that's not the way Linux works. 
 
 # fdisk
+There are many tools to use when partitioning disks. I like parted best - or gparted is best if you have a Desktop GUI! There is also fdisk, an older and oft used tool for partitioning.
 
+Instructions on how to use it.
+https://www.crucial.com.au/blog/2009/11/18/how-to-create-a-new-partition-on-a-linux-server/
+
+Make sure your /dev/sdb1 is unmounted.
+
+```
+sudo fdisk /dev/sdb1
+d ( delete partition )
+n ( new partition )
+follow instructions
+p (view the part)
+w (write the part)
+```
+
+Run
+```
+lsblk --output  NAME,FSTYPE,SIZE,MOUNTPOINT
+```
+
+To see there is no filesystem on the partition.
+
+Then lets put a file system on the disk. If you want to try and mount it now, you'll see an error, the system expects a file system type there.
+
+```
+#If curious
+sudo mount /dev/sdb1 /home/melvyniandrag/mntpoint
+#error
+```
+
+So we'll put a file system on there.
+
+```
+mkfs.ext4 /dev/sdb1
+mount the partition in a few places. Add files. Unmount, mount somewhere else, see the files are still there.
+```
+
+##Etc.
+You may have noticed that with parted we specify a file system type when making the partition. That isn't essential, it's optional. See the documentation:
+
+https://www.gnu.org/software/parted/manual/html_node/parted_19.html
