@@ -109,3 +109,10 @@ people discuss the uses of /bin, /sbin, /usr/bin, /usr/sbin, /usr/local/bin, ~/b
 
 
 It hasn't mattered to me in my career what goes where, but depending on the depth you go into Linux you may develop a passionate opinion.
+
+
+## If time
+
+Read the sbin/bin article together.
+
+http://landley.net/writing/hackermonthly-issue022-pg33.pdf
