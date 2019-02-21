@@ -70,6 +70,18 @@ You have to edit `/etc/fstab` just like with adding disks / partitions.
 /swapfile swap swap defaults 0 0
 ```
 
+## Swap space can be on it's own partition too
+Add a disk to your machine.
+```
+parted /dev/sdX
+mklabel gpt
+mkpart primary linux-swap 0% 100%
+print
+quit
+sudo mkswap /dev/sdXN
+sudo swapon /dev/sdXN
+```
+Then play with the swap space as we did with the swap file, you can update fstab too.
 
 ## References
 Follow these excellent online tutorials.:
