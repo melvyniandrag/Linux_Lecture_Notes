@@ -59,6 +59,9 @@ $which hello
 
 So that's how you change your PATH, and that's what the PATH is all about. The are other syntaxes for changing the PATH and other means to do it, but this will suffice for us for now.
 
+## Ordering of stuff in your PATH
+What is the resolution for stuff in your path?
+
 # Binary vs. Executable ( A Vocabulary Lesson )
 The expressions "binary" and "executable" are used interchangeably in Linux circles, but they don't always mean the same thing. And ".exe" in windows in an executable file. A file with x permission is executable. When people refer to a binary/executable they generally mean a file that is compiled into a binary format that the machine can read and run. Like "cat" is a binary file. If you 
 
@@ -67,3 +70,5 @@ vim /bin/cat
 ```
 
 you'll see its a  mess, it's a binary file that's compiled to be read b y a computer, it's not a text file that a human can read. Thats why when you look at it with vim you see unreadable junk.
+
+
