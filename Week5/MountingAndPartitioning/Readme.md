@@ -175,7 +175,7 @@ Log back in and see the partition is present.
 
 ```
 mkdir ~/opt_backup
-cp -r /opt/* ~/opt_backup  
+cp -aR /opt/* ~/opt_backup  
 sudo mount /dev/sdc1 /opt
 lsblk
 ```
