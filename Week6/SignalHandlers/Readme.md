@@ -81,7 +81,9 @@ $ jobs
 ## SIGINT, SIGTERM and SIGKILL
 `INT` is sent when you hit `CTRL+Z` on your keyboard. It interupt the process and makes it stop. `SIGINT` can also be sent will `kill`. `SIGTERM` and `SIGINT` are approximately the same thing, differences in their behavior are left up to the application developer. You should now send `INT` and `TERM` to the `runForever` program and you will see that both end the process. 
 
-We will change the behavior now. Open `int_term.c` on your computer and have a look at it.
+We will change the behavior now. Open `int_term.c` on your computer and have a look at it. ( Look at 01_*.c with the class and point out the cusom signal handlers. Also, as an added bonus not relevant to signal handling, notice that there are different return codes in the code. Run the code. From a separate terminal window, send kill signals. Then inspect the return code of the running process and see how we customized the return valu based on which signal we received. Remember that in our first assignment we looked at $? to see how a program ended. You can return different values not just fro mbash scripts, as we've done with `return` and `exit` statements up until now. Your software can be programmed to return values too.
+
+Returning to our discussion of signals, signals can be caught,  ignored, or blocked.
 
 ## SIGSTOP and SIGTSTP
 
