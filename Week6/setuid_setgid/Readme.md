@@ -19,37 +19,49 @@ $ id
 ```
 So now we know what the uid of the root user is. Check out this program:
 
-```
-#include <stdio.h>
-#include <sys/types.h>
-#include <unistd.h>
-int main(void)
-{
-    int current_uid = getuid();
-    printf("My UID is: %d. My GID is: %dn", current_uid, getgid());
-    system("/usr/bin/id");
-    if (setuid(0))
-    {
-        perror("setuid");
-        return 1;
-    }
-    //I am now root!
-    printf("My UID is: %d. My GID is: %dn", getuid(), getgid());
-    system("/usr/bin/id");
-    //Time to drop back to regular user privileges
-    setuid(current_uid);
-    printf("My UID is: %d. My GID is: %dn", getuid(), getgid());
-    system("/usr/bin/id");
-    return 0;
-}
-```
-
 We see that with this program we make a few calls to getuid() and a few calls to setuid(). You don't have to worry too much about this program - if you don't know C it will maybe scare you a bit. That's why I've chosen this simple and illustrative program.  The main idea is that you see some source code here that calls these mysterious functions getuid() and setuid()! We can change our user id while the program is running to trick the computer into thinking you are root!
 
 `getuid` returns the user id of the user running the program.
 
 
+We will first compile this normally and run it. You will see it fails and it exits with the value 1.
+```
+$ gcc setuid.c -o setuid
+$ ./setuid
+...
+error msg
+$ echo $?
+1
+```
 
+To make this work, we will have to change the ownership, the group, and the permissions.
+
+```
+$ sudo chown root:root setuid
+$ sudo chmod +s setuid
+$ ls -l setuid
+$ ./setuid
+```
+
+So you see that both user and group have an `s` where there used to be an `x`. This means that the program can setuid() and setgid(). For this example we only wanted to setuid(), so we can just set u+s.
+
+```
+$sudo chmod g-s setuid
+$ls -l setuid
+$./setuid
+```
+
+Notice if we make group have `+s` but take the privilege away from user, 
+
+```
+$sudo chmod u-s,g+s setuid
+$ls -l setuid
+$./setuid
+[fails]
+```
+
+Also, rememberwhen we were setting permissions using the octal notation? You can do that for this as well. There is no setAllID, there isonly setuid and setgid
+So set uid is a 4, setgid is a 2, but what does the 1 correspond to? Not a big deal, I'll leave it here for you to read if you're curious! https://askubuntu.com/questions/432699/what-is-the-t-letter-in-the-output-of-ls-ld-tmp . So getting back to octal numbers and setuid/setgid we can set the permissions to r-sr-xr-x by saying `chmod 4555`. We can set the permissions to `r-xr-sr-x` with `chmod 2555`. Etc.
 
 ## A simple reference:
 https://www.adampalmer.me/iodigitalsec/2009/10/03/linux-c-setuid-setgid-tutorial/
