@@ -10,3 +10,5 @@ Since we're playing with compilers and exploring how to program on Linux, I figu
 ## Curl
 
 ## symlinks. hard links vs soft links
+
+Note: Just to show, look here: https://docs.python.org/3/library/os.html search for symlinks. You will see that there is discussion of symlinks in the os module documentation. Now you know what they're talking about.
