@@ -65,3 +65,14 @@ So set uid is a 4, setgid is a 2, but what does the 1 correspond to? Not a big d
 
 ## A simple reference:
 https://www.adampalmer.me/iodigitalsec/2009/10/03/linux-c-setuid-setgid-tutorial/
+
+but this reference is flawed. Here is more reading to go more in depth!
+
+https://stackoverflow.com/questions/7656549/understanding-requirements-for-execve-and-setting-environment-vars
+https://stackoverflow.com/questions/36673765/why-can-the-execve-system-call-run-bin-sh-without-any-argv-arguments-but-not/36674366
+https://stackoverflow.com/questions/2794150/when-can-argv0-have-null
+https://unix.stackexchange.com/questions/187666/why-do-we-have-to-pass-the-file-name-twice-in-exec-functions
+https://stackoverflow.com/questions/17785983/ruid-euid-after-exec
+https://jameshfisher.com/2017/02/05/how-do-i-use-execve-in-c.html
+http://www.cis.syr.edu/~wedu/Teaching/cis643/LectureNotes_New/Set_UID.pdf
+
