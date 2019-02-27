@@ -28,8 +28,8 @@ static void sig_handler_term(int i)
 
 int main(void)
 {
-    signal(SIGINT,  sig_handler_int);
-    signal(SIGTERM, sig_handler_term);
+    signal( SIGINT, sig_handler_int );
+    signal( SIGTERM, SIG_IGN );
 
     while ( ( keep_running_int) && ( keep_running_term ) ) {
         puts("Still running...");

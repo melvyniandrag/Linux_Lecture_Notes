@@ -85,6 +85,11 @@ We will change the behavior now. Open `int_term.c` on your computer and have a l
 
 Returning to our discussion of signals, signals can be caught,  ignored, or blocked.
 
+We will play with the 02*.c and 03*.c code here to see the difference between ignored and blocked signals. Experiment for 5 minutes or so until we are comfortable we understand the difference.
+
+Notice that you can always send signal -9, no matter what is happening this signal will work. It cannot be blocked or ignored! In any Linux system administration book you read you will see the 
+warning: `NEVER USE -9!`. We have just seen that processes can deliberately ignore or block signals if interruption would cause some serious system harm. As such, only use SIGKILL under very dire circumstamstances, becuase issuing tihs signal could cause file corruption!
+
 ## SIGSTOP and SIGTSTP
 
 ## SIGSEGV
