@@ -93,6 +93,19 @@ warning: `NEVER USE -9!`. We have just seen that processes can deliberately igno
 ## SIGSTOP and SIGTSTP
 
 ## SIGSEGV
+This is the seg fault signal. This happens on x86 architectures when an invalid memory access is made. For interesting examples of code that causes this signal, check out:
+
+1. https://codegolf.stackexchange.com/questions/4399/shortest-code-that-raises-a-sigsegv
+2. https://stackoverflow.com/questions/18986351/what-is-the-simplest-standard-conform-way-to-produce-a-segfault-in-c
+
+The simplest example that causes a segmentation fault is the program 
+
+```
+$ cat main.c
+main;
+$ gcc main.c -o main
+$ ./main
+```
 
 ## What are signals?
 Signals are a form of interprocess communication used in Linux. There are many interprocess communication mechanisms, this is just one of them. If you've never heard of IPC, just know it is all around you when you are using computers. For example, consider the case when you are on your telephone and you're listening to music. When a phone call comes in, the music is probably paused and the phone app is brought up on the screen. The operating system on your phone needed an IPC mechanism to detect that the phone process was in some active state and that other interfering processes need to take action while the call is active. Depending on how the software is written on your phone, the music might resume playing when you hang up, and the music app might come to the foreground on your screen. Or maybe it stays paused and you have to manually reopen the app and hit 'play' again. Or maybe something else happens.
@@ -100,3 +113,6 @@ Signals are a form of interprocess communication used in Linux. There are many i
 IPC might also be used if you have two processes on a device - maybe you have one process listening for radio transmissions and another on that turns a motor. If the radio receiver receives a signal, maybe you want another process to turn a motor and open your garage door or something.
 
 There are many ways to do IPC, even on Linux there are a bunch of IPC mechanisms. Signals is just one of them.
+
+## Who sends signals?
+The Linux kernel can send a signal, another process can send a signal, or a process can send a signal to itself. We saw the kernel sending signals in the case of segfaults, we saw the 
