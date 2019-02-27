@@ -8,3 +8,5 @@ Sometimes you want some software that isn't provided by your package manager, ho
 Since we're playing with compilers and exploring how to program on Linux, I figured you should get the experience of building some software from source.
 
 ## Curl
+
+## symlinks. hard links vs soft links
