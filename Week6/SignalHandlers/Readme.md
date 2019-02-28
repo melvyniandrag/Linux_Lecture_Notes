@@ -90,7 +90,46 @@ We will play with the 02*.c and 03*.c code here to see the difference between ig
 Notice that you can always send signal -9, no matter what is happening this signal will work. It cannot be blocked or ignored! In any Linux system administration book you read you will see the 
 warning: `NEVER USE -9!`. We have just seen that processes can deliberately ignore or block signals if interruption would cause some serious system harm. As such, only use SIGKILL under very dire circumstamstances, becuase issuing tihs signal could cause file corruption!
 
+Actually, thats what they say.
+
+Let's read and laugh at the reasons say not to use SIGKILL in the following posts:
+https://www.reddit.com/r/linux/comments/4b1mwh/do_not_use_sigkill/
+https://unix.stackexchange.com/questions/281439/why-should-i-not-use-kill-9-sigkill
+http://turnoff.us/geek/dont-sigkill/
+
+People above say things like "kill -9 is pulling the rug out", but no one provides a single concrete example of something going haywire with 
+kill -9. "weasel words".
+
+The counterculture:
+See borud and dbrower
+https://unix.stackexchange.com/questions/8916/when-should-i-not-kill-9-a-process
+
+
+I don't know. I'm not terribly opposed to using kill -9. You develop your own opinion. I will generally try the gentler kill signals first and only in the end resort to kill -9.
+
+Though I don't know all the signal numbers by heart, I always have to look at the kill -l table to see what my options are.
+
 ## SIGSTOP and SIGTSTP
+About the two:
+https://stackoverflow.com/questions/11886812/whats-the-difference-between-sigstop-and-sigtstp
+
+you can ignore the SIGTSTP that is sent from the keyboard. There is no ignoring the SIGSTOP command, however.
+See stop.c. All we do in this program is ignore the signal. Handling a tstp is slightly more complex than handling a process termination. 
+You need to provide a way for the process to come back to life.
+
+```
+#go through a few iterations of this
+
+#try ctrl+z - does nothing
+kill -SIGSTOP $(pidof a.out)
+kill -SIGCONT $(pidof a.out)
+# a few times
+#finally
+kill -SIGTSTP $(pidof a.out)
+#nothing
+kill -SIGKILL $(pidof a.out)
+#done
+```
 
 ## SIGSEGV
 This is the seg fault signal. This happens on x86 architectures when an invalid memory access is made. For interesting examples of code that causes this signal, check out:
