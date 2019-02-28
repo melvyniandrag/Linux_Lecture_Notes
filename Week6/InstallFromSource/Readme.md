@@ -1,5 +1,7 @@
 # Installing software from source.
 
+!! May need to push this back if there is no time.
+
 ## Introduction
 If you want some piece of software on your computer, and you're on some relatively mainsteam distribution, you will generally use a package manager. We've already been using package managers without talking too much about what they are. We just `apt-get install` stuff. 
 
