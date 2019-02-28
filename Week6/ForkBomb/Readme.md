@@ -7,3 +7,10 @@ We've already seen forks wehn we run a process with & sending it to the backgrou
 Fork bomb in bash 
 
 Fork bomb in Python
+
+
+bash fork bomb
+
+:(){ :|: & };:
+
+func(){ func|func & };func

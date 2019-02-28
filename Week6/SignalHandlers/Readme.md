@@ -111,6 +111,8 @@ Though I don't know all the signal numbers by heart, I always have to look at th
 
 ## SIGSTOP and SIGTSTP
 About the two:
+Pretty basic question. Here's a linux user on SO that doesn't understand the difference between tstp and stop. 
+After tonight you can all answer the question confidently.
 https://stackoverflow.com/questions/11886812/whats-the-difference-between-sigstop-and-sigtstp
 
 you can ignore the SIGTSTP that is sent from the keyboard. There is no ignoring the SIGSTOP command, however.
