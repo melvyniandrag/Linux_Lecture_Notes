@@ -7,7 +7,11 @@ here's the api the tuturial plays with
 http://petstore.swagger.io/
 
 Maybe useful
+
 https://gist.github.com/joyrexus/85bf6b02979d8a7b0308
+
+https://curl.haxx.se/docs/httpscripting.html
+
 ## use curl to get data from a few websites
 
 ## build curl from source
