@@ -1,0 +1,6 @@
+7:00-7:15 check in on everyone's credit online, make sure all have a machine to work with.
+7:15-8:15 Install software, links
+8:15 - 8:30 break
+8:30 - 9:00 SSH, hashing etc.
+9:00 - 9:30 curl tutorial
+9:30 - 9:45 Random stuff and go over homework.
