@@ -9,3 +9,5 @@ http://lists.busybox.net/pipermail/busybox/2010-December/074114.html
 https://blog.codinghorror.com/regular-expressions-for-regular-programmers/
 
 https://blog.codinghorror.com/because-they-all-suck/
+
+https://www.tecmint.com/set-system-locales-in-linux/
