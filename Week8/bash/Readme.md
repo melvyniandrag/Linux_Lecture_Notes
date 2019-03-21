@@ -183,8 +183,10 @@ The options we'll cover are `-k`, `-n`, `-g` and `-t`.
 
 We will make a file
 
+```
 1 2
 2 1
+```
 
 Then we will try to run sort in the following ways:
 
@@ -197,8 +199,11 @@ Notice that k changes the column we sort on
 
 
 The lets make another file
+
+```
 11 2
 2 1
+```
 
 Then run
 
@@ -216,13 +221,17 @@ cat sortFile3.txt | sort -n -k2
 
 So now you know a bit about the k and n flags. How does k know what a column is? By default sort uses spaces and tabs as the delimiter. You can take the last file and, for line one, add a bunch of spaces and tabs. You will see that the same command works.
 
+```
 11                         2
 2 1
+```
  
 We can chage the column delimiter if we want. You use the -t flag for that.Make a file like this
 
+```
 11:2
 2:1
+```
 
 And run
 
@@ -236,9 +245,11 @@ The -g flag allows you to sort by different types of numeric notation. Just so y
 
 For example, try to sort this:
 
+```
 2.0:8.9
 1.234:7.1
 1.67:9.6
+```
 
 ```
 cat sortFile5.txt | sort -g -k1 -t:
