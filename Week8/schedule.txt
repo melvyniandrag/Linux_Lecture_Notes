@@ -1,0 +1,6 @@
+7:00-7:25 putty. Configure machine for ssh, allow class to login with putty
+7:25-7:50 bash
+7:50-8:00 break
+8:10-8:40 website setup
+8:40-9:10 curl + http
+9:20-950 homework and exam discussion.
