@@ -1,0 +1,15 @@
+http://www.tldp.org/HOWTO/NCURSES-Programming-HOWTO/
+https://www.linuxjournal.com/content/shell-scripting-dungeons-dragons-and-dice
+https://www.linuxjournal.com/content/programming-color-ncurses
+https://www.linuxjournal.com/content/creating-concentration-game-pairs-bash
+https://www.linuxjournal.com/content/writing-more-compact-bash-code
+https://www.linuxjournal.com/content/new-issue-out-linux-journal-october-2018-programming
+https://www.linuxjournal.com/content/normalizing-filenames-and-data-using-bash-string-variable-manipulations
+https://www.linuxjournal.com/content/roman-numerals-and-bash
+https://www.linuxjournal.com/content/about-ncurses-colors-0
+https://www.linuxjournal.com/content/more-roman-numerals-and-bash
+https://www.linuxjournal.com/content/converting-decimals-roman-numerals-bash
+https://www.linuxjournal.com/content/considering-fresh-c-extensions
+https://www.linuxjournal.com/content/system76-announces-american-made-desktop-pc-open-source-parts
+https://www.linuxjournal.com/content/single-board-computers-issue
+https://www.linuxjournal.com/content/creating-adventure-game-terminal-ncurses
