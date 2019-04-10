@@ -42,3 +42,8 @@ awk '/(\xF0\x9F\x98\x87){3,}/' ../angel.txt
 ```
 
 The () groups the characters together.
+
+## About programming languages
+
+Are there any programming languages that allow you to use non-ascii characters for variable names? Most languages seem to use ascii characters, generally a-zA-Z, and maybe "-" and usually digits if they are not the first characters in the string. Why cant
+we use the laughing emoji as a variable name?
