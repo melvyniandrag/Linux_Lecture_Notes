@@ -25,6 +25,9 @@ Awk supports utf8. Clone and run the original AWK, to get away from the gawk tha
 of installing from source.)
 https://github.com/onetrueawk/awk
 
+I got interested in this because on page 31 of "The Awk programming language" they list the escape sequences available available, but hex doesnt come up. HEX represents bytes very nicely but I've not seen octal much in the wild - except we use a sort of octal notation 
+for setting permissions. What is the appeal of octal notation to UNIX? each octal character represents 3 bits! bute we are used to ultiples of 2 and better yet multiples of 8.
+
 
 ``` 
 echo -e "\xF0\x9F\x98\x87" >> angel.txt
