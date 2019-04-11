@@ -17,6 +17,12 @@ We will look at these emojis and how to handle them in Linux.
 https://apps.timwhitlock.info/emoji/tables/unicode
 https://en.wikipedia.org/wiki/UTF-8
 
+## To do next
+
+Look at the above links.
+
+Then work out the examples from the "code to run file I made there. have students work out another example, an arabic letter or something.
+
 
 ## AWK
 
