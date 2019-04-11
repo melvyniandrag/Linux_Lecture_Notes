@@ -117,6 +117,30 @@ sed -n '/\xf0\x9f\x98\x81/p' <smile.txt
 ```
 The above command will print out a replacement pattern for every matching line.
 
+###Interesting experiment
+
+sed -n '/..../p' <smile.txt # will we get a match? Does sed think the emoji is one character or 4?
+
+I ask this because C++ has no knowledge of utf 8. whenever working with strings in C++ you generally have to do some error handling to make sure the string is utf8. C++ only sees bytes.
+
+### For your homework
+
+```
+sed -n 's/^.*HEX_OR_OCTAL.*$/output string/p' < input.txt
+```
+
+For example, to output a message for every line containing a smiley we run:
+
+```
+melvyn@melvyn-ThinkPad-T410:~/emoji$ cat smile
+😁
+aa😁😁b😁b😁bbb
+nothing here
+melvyn@melvyn-ThinkPad-T410:~/emoji$ sed -n 's/^.*\xf0\x9f\x98\x81.*$/found/p' < smile
+found
+found
+```
+
 ## About programming languages
 
 Are there any programming languages that allow you to use non-ascii characters for variable names? Most languages seem to use ascii characters, generally a-zA-Z, and maybe "-" and usually digits if they are not the first characters in the string. Why cant
