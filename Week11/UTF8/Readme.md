@@ -127,6 +127,15 @@ Look at comment here https://softwareengineering.stackexchange.com/questions/216
 ## There is more to the story. Beyond ASCII and utf8 there are other encodings.
 I've worked with UTF16 a bit on windows. Look back at this chart https://www.fileformat.info/info/unicode/char/1f603/index.htm and youll see that the smiley face we already worked out the hex representation for in utf 8 ( f09f9883 ) is not the same as the uf16 hex representation (d83dde03). The prefixes we saw before ( 11110XXX 10XXXXXX 10XXXXXX 10XXXXXX) do not hold true for utf16, the encoding is different. You might need to learn about it for your travels in computer science. Almost all of my work has been with ASCII and UTF8 text, but your experiences may be different.
 
+## Let's see if any of our tools are broken
+Do sed,awk and echo have a concept of language, or do they just care about bytes? The letters, symbols, and emojis we've seen so far have lexical value to the people who use them . If you look at the pocogtfo article I've brought to class, howver
+youll see that the authors have found some instances of languages that are happy to serve you invalid characters ( characters that have no lexical value at all ) For example, the character 11100000 Is an invalid unicode character. Will awk, sed or bash complain abut this character? There are valid utf16 sequences that aren;t valid utf8 sequences.
+
+## Locales 
+Take away - text is just bytes and the computer has to be able to handle the bytes given to it and serve up some fonts so you can read it. there are different encodings out there, so a smiley emoji in one encoding may have the binary value 11111000blah blah but the pattern of ones and zeros might be different in another encoding.
+
+
+
 ## In the news, an aside
 $99 cuda capable machine.
 https://devblogs.nvidia.com/jetson-nano-ai-computing/?ncid=em-ded-ndcdcgdrnr-82651&mkt_tok=eyJpIjoiTTJKaU1EYzVaR1UxTm1WbCIsInQiOiIrN2FSanY5RkxcL2NIRXIyck11MzI3NkhVcUhVRFl0NjU1d0tWMVMza2wyaGNGNGVldllTQWtoaXFvamtRVnRDcFlRWjEzY0hRQW9XejVMaERcL1daOWl6SHdiRlVcL2ZINHU1bVp0OHhhM2Z4dWJDY1ZjaFZaVFhpWFZ1VWtTRzRGZyJ9
