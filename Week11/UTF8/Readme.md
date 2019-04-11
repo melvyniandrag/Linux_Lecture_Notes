@@ -132,7 +132,29 @@ Do sed,awk and echo have a concept of language, or do they just care about bytes
 youll see that the authors have found some instances of languages that are happy to serve you invalid characters ( characters that have no lexical value at all ) For example, the character 11100000 Is an invalid unicode character. Will awk, sed or bash complain abut this character? There are valid utf16 sequences that aren;t valid utf8 sequences.
 
 ## Locales 
-Take away - text is just bytes and the computer has to be able to handle the bytes given to it and serve up some fonts so you can read it. there are different encodings out there, so a smiley emoji in one encoding may have the binary value 11111000blah blah but the pattern of ones and zeros might be different in another encoding.
+Take away - text is just bytes and the computer has to be able to handle the bytes given to it and serve up some fonts so you can read it. there are different encodings out there, so a smiley emoji in one encoding may have the binary value 11111000blah blah but the pattern of ones and zeros might be different in another encoding.Unfortunately , the only two encodings Im very familiar with are utf8 and utf16, but you cant use utf16 on linux ( to my knowledge ). There is a comment here : https://stackoverflow.com/questions/36592540/unable-to-set-utf-16-as-locale to back it up.
+
+You can experiment to see that emojis are invalid in certain terminal configurations - try this:
+
+```
+user@machine$locale -a
+LOCALE_1
+LOCALE_2
+.
+.
+.
+LOCALE_N
+```
+to see available locales on your machine. I don't know off the top of my head how to install more but undoubtedly its very simple. Choose one that isn't utf8 and then run this script:
+
+```
+export LC_ALL=C.UTF-8
+#export LC_ALL=POSIX
+echo -e "\U0001F603"
+echo -e "\uD83D\uDE03"
+```
+
+toggling the LC_ALL line between the utf8 locale and the non utf 8 locale. you'll get emojis printed for one, and no emojis for the other.
 
 
 
