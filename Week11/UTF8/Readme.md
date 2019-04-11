@@ -2,6 +2,8 @@
 
 ## Introduction
 
+UTF8 is an extension of ascii. ascii is a seven bit encoding - the first bit in ascii has always been left as 0, and different platforms have taken that bit to handle custom characters. Notice in the ascii tanble from the pocogtfo article that the one  byte utf8 characters start with zero . This gives backwards compatabilitiy - all ascii texts are utf8 compliant. but all utf8 texts arent ascii, as we are a about to see in this lecture. We're going to explore how Unicode affects our experience on the command line, with awk and sed and how we can output hex/octal/binary representations of our data to work around cases when UTF8 gets in our way for one reason or another.
+
 We will look at these emojis and how to handle them in Linux.
 
 ```
@@ -79,6 +81,41 @@ The () groups the characters together.
 The &nbsp is all over the html Ive seen in the wild. What is this character? Is it ASCII or a unicode character? 
 
 ## Sed
+
+### Super common use case - search and replace
+
+```
+sed 's/regex_pattern_to_replace/replace_with_this/g' < file.ext
+```
+e.g.
+
+```
+user@machine$ echo "hello" > output.txt
+user@machine$ echo "world" >> output.txt
+user@machine$ sed 's/ll/rr/g' < output.txt
+herro
+world
+user@machine$ cat output.txt
+hello
+world
+```
+Notice that the original file isn't chagned. If you want to do that, you canchange the command a bit:
+
+```
+sed -i 's/ll/rr/g' output # notice output is a command line option now and not stdin. This is for technical reasons.
+```
+ we'll look at sed a bit deeper soon when we take one last look at the various regexp utilities out there. For now we'll just use it as another tool in our investigation of unicode.
+ 
+ 
+### Our use case
+Revisiting the smiley example above, we'll make a file containing the smiley and then another line containing something else.
+
+```
+echo -e "\xf0\x9f\x98\x81" > smile.txt
+echo "nothing here" >> smile.txt
+sed -n '/\xf0\x9f\x98\x81/p' <smile.txt
+```
+The above command will print out a replacement pattern for every matching line.
 
 ## About programming languages
 
