@@ -1,4 +1,19 @@
-# Sed & UTF8
+# Utf8
+
+## Schedule
+1. UTF8 discussion
+  - look at the utf8 table in the pocogtfo article.
+  - Look at some emojis and foreign language characters on the command line.
+  - convert the hex for a cyrillic letter to a utf8 code point
+  - convert the hex for an emoji to a utf8 code point
+  - convert the utf8 code point for an arabic letter to hex.
+  
+  - convert a utf8 code point to octal.
+  - convert a utf8 code point to octal.
+
+Show how awk can be used for code points using hex and octal.
+The take away from class today needs to be how to use sed to accomplish the homework task.
+
 
 ## Sed
 
