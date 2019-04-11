@@ -4,6 +4,14 @@
 
 UTF8 is an extension of ascii. ascii is a seven bit encoding - the first bit in ascii has always been left as 0, and different platforms have taken that bit to handle custom characters. Notice in the ascii tanble from the pocogtfo article that the one  byte utf8 characters start with zero . This gives backwards compatabilitiy - all ascii texts are utf8 compliant. but all utf8 texts arent ascii, as we are a about to see in this lecture. We're going to explore how Unicode affects our experience on the command line, with awk and sed and how we can output hex/octal/binary representations of our data to work around cases when UTF8 gets in our way for one reason or another.
 
+You will see utf8 everywhere. In the top of most webpages youll probably see.
+
+```
+<meta charset="utf-8">
+```
+I don't know how I wound up knowing so much about it, I think it might be a big part of linux culture, although it has taken over programming interfaces all over the world. UTF16 is used by the windows operating system and you can see it if youre a programmer when you use w_char_t datatypes on Windows, which are 2 byte characters.(16bit). To my knowledge it is there for historical reasons. Windows development started in the early 90s, and I guess utf8 was developed by two big Linux guys, Rob Pike and Ken Thomposn around the same time. I'm sure there's more to the story but the story doesn't interest me that much to know more. There are a few encodings, and Windows used utf16 natively, but applications support utf8 in their own software.
+
+
 We will look at these emojis and how to handle them in Linux.
 
 ```
