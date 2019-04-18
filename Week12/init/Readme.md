@@ -116,8 +116,92 @@ WantedBy=multi-user.target
 
 And then we need to start the service `sudo systemctl start hello`. Then check `service hello status`. You should see your service running. Then look at `/opt/hello.log`. Check back every ten seconds and you'll see the file growing. Then `sudo reboot`. Now when you  check the status again `sudo service hello status`, youll see it's not running. To have the service run whenever you boot, you need to enable it. `sudo systemctl enable hello`. Then reboot again. Now when you check the status, you'll be running the service.
 
+you can stop the service too with `sudo service hello stop`. Then check the status. Then reboot. Then check the status. 
+Do you think, before checking the status, that the service is stopped or is running? [get an asnwer] the service is running. 
+Because it is enabled. You can disable the service and reboot. Try that now and verify that it works.
+`sudo systemctl disable hello`. Then reboot, then check the status.
+
+You can view the logs for your service wth journalctl:
+
+```
+journalctl -u hello
+```
+
+or just look in the rsyslog file
+
+```
+cat /var/log/syslog | grep first
+```
+you'll see in either case the text from "Description" from your hello.service file.
+
+## A look at other systemd services
+You can look at the other systemd service on your computer with
+```
+sudo systemctl list-unit-files --type=service 
+```
+
+You can see the disabled ones with 
+
+```
+sudo systemctl list-unit-files --type=service | grep disabled
+```
+
+and the enabled ones with 
+
+```
+sudo systemctl list-unit-files --type=service | grep enabled
+```
+
+You should notice that there is a cron.service there - we already played with cron in this class. You know that there is a cron daemon process running on your machine. Take a look at it!
+
+```
+ps -aux | grep cron
+````
+
+This daemon was started by init - by systemd, and now you see how it's done. You should see the service you created in the list of enabled service too ( or disabled if you disabled it! )
+
+## The service vs systemctl tools
+You have noticed me using the `service` and `systemctl` tools interchangeably while managing services. Service is a wrapper 
+around systemctl. systemctl is part of systemd, but service is available regardless of the init system. Have a look at the 
+code for service:
+
+```
+sudo su -
+which service
+vim /path/to/found/service
+```
+
+have a poke around the file. Notice that service is not a binary, it is a shell script. With enough time to think about it
+, you all know enough now to be able to pick thorugh the service script and understand what it does! I'd bet in January at 
+least you wouldn't even recognize it as a shell script, but at this point you probably can, you might see there are a few 
+functions inside, etc. You can even tell which interpreter it runs against!
+
+Anyway, search in that file for 'upstart', 'sysvinit' and 'systemd' and you'll see that the script does different actions depending on which init system it finds on your machine.
+
+A weird thing is that the parameters to service/systemctl are reversed. You write:
+```
+service SERVICENAME ACTION
+systemctl ACTION SERVICENAME
+```
+weird. This could be changed if you wanted.
+
+## In depth with systemd
+See section 4.2 #3 from here:https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html
+Why is it good that you are learning a little bit about systemd? You may need to use this knowledge in the future to do
+software installs on your Linux box! There is a cool language called CUDA that does parallel computations on your 
+NVIDIA GPU. The language installation procedure requires you to change the mode that your computer runs 'init' so that 
+graphical components aren't run during GPU software installs. You can check the link above. This is just an example of the
+most recent time that I needed to play with my init configuration.
+
+Notice that the instructions say to boot to runlevel 3 - there is no runlevel 3 with systemd, and we'll talk about that now, 
+and see what they ACTUALLY meant.
+
+
+## Compare systemd to sysvinit
+
 ## References, Other Reading
 1. init - https://www.linuxjournal.com/article/3109
+2. service vs systemctl https://askubuntu.com/questions/903354/difference-between-systemctl-and-service-commands
 
 
 
