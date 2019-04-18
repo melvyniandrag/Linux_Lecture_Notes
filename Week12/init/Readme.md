@@ -215,6 +215,8 @@ Write a service that targets graphical.target and show that even if it is enable
 ## Question
 I forget how to change the target the machine boots to - how do you set it? There is a systemctl option I believe, but there might be a config file you can manually change.
 
+## Question Number 2
+I don't know what happens if you introduce a circular dependency into systemd. If you make service a depend on service b and service b depend on service a, what happens? Seems to be info here -> https://unix.stackexchange.com/questions/193714/generic-methodology-to-debug-ordering-cycles-in-systemd
 
 ## References, Other Reading
 1. init - https://www.linuxjournal.com/article/3109
