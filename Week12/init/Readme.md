@@ -84,6 +84,38 @@ people feel as systemd has made its way into debian, ubuntu, redhat, centos, sus
 There is the nagging anxiety, however . . . what if "they" are right and this is contaminated software . . . what if the NSA
 is watching us . . . I've personally given up on expecting any off-the-shelf software to be without loopholes!
 
+## Writing systemd services
+There is more to the story, but to get us going let's just jump right into practical things. Sometimes you want a job to run 
+when you power on your machine. For example, you want skype to turn on as soon as you boot your machine. Or you are running
+Linux on your McDonalds touch-screen cash register and you want the cash register to boot right to the cash-register
+application, like these: https://www.reddit.com/r/employeesonly/comments/1t6w9y/mcdonalds_cash_registers_xpost_from/.
+If your computer is running systemd, you can write some systemd services / service units and have them run on boot!
+In this example we'll write a little python program that just says 'hello world' every 10 seconds and logs it to a `/opt/hello.log`. We'll call this file `hello.py`.
+
+Log in as root (`sudo su -`) and then write `/opt/hello.py`. The python code:
+
+```
+import time
+with open('/opt/hello.log', 'a') as fout:
+  while 1:
+    fout.write("hello world")
+    time.sleep(10)
+```
+and then ( still as root ) we need to make a service file `/lib/systemd/system/hello.service`.
+
+```
+[Unit]
+Description=My first service
+
+[Service]
+ExecStart=/opt/hello.py
+
+[Install]
+WantedBy=multi-user.target
+```
+
+And then we need to start the service `sudo systemctl start hello`. Then check `service hello status`. You should see your service running. Then look at `/opt/hello.log`. Check back every ten seconds and you'll see the file growing. Then `sudo reboot`. Now when you  check the status again `sudo service hello status`, youll see it's not running. To have the service run whenever you boot, you need to enable it. `sudo systemctl enable hello`. Then reboot again. Now when you check the status, you'll be running the service.
+
 ## References, Other Reading
 1. init - https://www.linuxjournal.com/article/3109
 
