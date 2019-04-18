@@ -212,6 +212,9 @@ write a bash script that executes on boot. Do that together in class and verify 
 ## Another example
 Write a service that targets graphical.target and show that even if it is enabled ,it wont run at boot because we don't boot to a graphical interface.
 
+## Pros and cons sysvinit vs systemd
+https://www.slant.co/versus/12956/12957/~systemd_vs_sysvinit
+
 ## Question
 I forget how to change the target the machine boots to - how do you set it? There is a systemctl option I believe, but there might be a config file you can manually change.
 
