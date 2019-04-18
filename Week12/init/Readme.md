@@ -186,6 +186,8 @@ systemctl ACTION SERVICENAME
 weird. This could be changed if you wanted.
 
 ## In depth with systemd
+The main things you are going to be interested with systemd are services, as I've showed you, and targets, as you've seen multi-user.target already. Targets are collections of services. You use the WantedBy and RequiredBy fields in your service files to specicy dependencies and link services together into targets. Also look at the multi-user.target file and note the various components of it.
+
 See section 4.2 #3 from here:https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html
 Why is it good that you are learning a little bit about systemd? You may need to use this knowledge in the future to do
 software installs on your Linux box! There is a cool language called CUDA that does parallel computations on your 
@@ -196,8 +198,23 @@ most recent time that I needed to play with my init configuration.
 Notice that the instructions say to boot to runlevel 3 - there is no runlevel 3 with systemd, and we'll talk about that now, 
 and see what they ACTUALLY meant.
 
+Focus on the symlinks on page 389 of the handout. See how there is no runlevel3 on systemd, but that runlevel 3 corresponds to a systemd target. Then focus on the image on page 388 of the handout that shows the order of event for systemd. 
 
 ## Compare systemd to sysvinit
+As we mentioned before, there is another init system that some members of the Linux community love and they wish that it hadn't gone away, and that system is sysvinit. I wanted us to use this init system in class so you could get used to it, but all of the distributions offered by google cloud run either upstart or systemd. I also didn't think it was worth it to put time into studying upstart because you'll likely never use it.
+
+To be brief I'll just say that sysvinit ran bash scripts serially - one at a time  - to bring your system up. You specified run levels that signified differnt things. As you can set up systemd with targets that specify which services are run, sysvinit used runlevels. The fact that sysvinit ran scripts one at a time instead of doing them in parallel is a criticism against sysvinit.
+
+## Another example of a systemd service.
+The service doesn't need to stay alive, it can just run and end. The example we did above contained a `while 1`. We can just 
+write a bash script that executes on boot. Do that together in class and verify that it works.
+
+## Another example
+Write a service that targets graphical.target and show that even if it is enabled ,it wont run at boot because we don't boot to a graphical interface.
+
+## Question
+I forget how to change the target the machine boots to - how do you set it? There is a systemctl option I believe, but there might be a config file you can manually change.
+
 
 ## References, Other Reading
 1. init - https://www.linuxjournal.com/article/3109
