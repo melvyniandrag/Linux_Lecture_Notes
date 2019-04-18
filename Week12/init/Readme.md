@@ -95,12 +95,21 @@ In this example we'll write a little python program that just says 'hello world'
 Log in as root (`sudo su -`) and then write `/opt/hello.py`. The python code:
 
 ```
+#!/usr/bin/python
+
 import time
 with open('/opt/hello.log', 'a') as fout:
   while 1:
     fout.write("hello world")
     time.sleep(10)
 ```
+
+Make the file executable
+
+```
+chmod 777 /opt/hello.py
+```
+
 and then ( still as root ) we need to make a service file `/lib/systemd/system/hello.service`.
 
 ```
