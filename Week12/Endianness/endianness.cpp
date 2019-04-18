@@ -5,6 +5,11 @@
 * ./a.out
 * You'll see 0x40 as the first  byte in the array. that's because
 * Intel CPUs are little endian, they put the lowest byte first.
+* 
+* You can check your cpu model with
+* cat /proc/cpuinfo
+* and you can find endiannes info explicitly with
+* lscpu | grep -i Byte
 */
 #include <cstdint>
 #include <cstdio>
