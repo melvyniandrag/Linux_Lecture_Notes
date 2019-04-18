@@ -1,3 +1,11 @@
+/**
+* To run this:
+* sudo apt-get install build-essential
+* g++ endianness.cpp
+* ./a.out
+* You'll see 0x40 as the first  byte in the array. that's because
+* Intel CPUs are little endian, they put the lowest byte first.
+*/
 #include <cstdint>
 #include <cstdio>
 
