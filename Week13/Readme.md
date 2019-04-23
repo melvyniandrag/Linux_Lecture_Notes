@@ -259,6 +259,18 @@ make sure to show that the pdfs are differnt in class, yet generate the same sum
 
 SHAttered reference: https://github.blog/2017-03-20-sha-1-collision-detection-on-github-com/
 
+## UNRELATED TO CYBER SECURITY
+Alot of questions here about how to make it industry. Its not that hard, just keep studying. Get a degree, get an entry level job, and move up the ladder. Know how to do things. Know a couple of languages. Know algorithms and datastructures. Work on an open source project if you have time. Go to local user groups.
+
+1. meetup.com -> look for tech meetups in NYC and go to meetings, talk to people.
+2. indeed.com, monster.com, etc.
+3. There are freelance sites I mentioned like upwork and freelancer - I made about 10K last year busting my hump and then owed about 4000 in taxes at the end. Not really worth it, but if you want to make a few bucks and do a few little projects I'd recommend it. Maybe check it out and see if your mileage is different.
+4. give talks at conferences. At least if they accept your talk they usually give you some swag like a tshirt and they let you in for free.
+> Here's an idea I had if anyone wants it, or else I'll do it. If you want to do it with help maybe we could work together ( like you do 80% of the work, I provide guidance and you put my name on the presentation ) https://github.com/alecthomas/pawk. There's a simple awk interpreter written in python. It's missing some functionality I believe. You could make it 100% awk compatible and then put some cool stuff in it and give a talk about how great awk is and whatever else you want to say. Or write a python interpreter in awk! And then use your python based awk interpreter to run your awk based python interpreter and then run a python script through it. That would be fun.
+5. Work on a project. You can  publish you results on websites like isntructables.com https://www.instructables.com/member/JulianCienfuegos/ I never did anything cool, but maybe you could.
+
+I think if you enjoy the work it shouldn't be hard. Many people hate writing software and leave the biz to do something else that they actually enjoy. There's alot to do though so you could probably find something you like. Just be ready to learn a new tool every week and sweat to meet ludicrous deadlines. I hope to have given you a taste of the software life in this class with strict deadlines, industry tools and a mixture of cool  stuff as well as annoying technical things.
+
 ## References
 Michael W. Lucas PGP&GPG - email for the practical paranoid
 Cool article about tr - https://www.linuxjournal.com/article/2563
