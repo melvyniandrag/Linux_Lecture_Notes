@@ -62,8 +62,23 @@ In any event, we've seen that ciphers are not so good for protecting sensitive d
 ## History of PGP, GPG, OpenPGP, GnuPG.
 To learn a bit about pgp / gpg there is a great reference by a guy names "Michael Lucas" and the book is called "PGP & GPG email for the practical paranoid". In this ~200 page book he goes through the history of these tools and how to use them. I'm maybe going to save you
 $25 dollars and tell you lots about what's in the book. https://nostarch.com/pgp.htm It's a good enough refernce though, if you want to pick it up and have it on your shelf. Indeed, I'm going to tell you alot tonight, and you'll learn quite a bit, but reading this book on a lazy saturday would be a great way to solidify your knowledge.
+
+[ TODO Fill this in with a few cool facts from the book ]
+
 ## Using GPG
-* show that people in the tech community use gpg keys to sign. 
+
+### Why should you know about GPG keys? 
+
+GPG keys are used in industry, especially in the opensource community. If you uploaded an ssh key to github for streamlining your git pushes, you may have noticed there was also an option for uploading your public gpg key. They explain here: https://help.github.com/en/articles/adding-a-new-gpg-key-to-your-github-account how to do it as well as which algorithms they support.
+Furthermore, Linux kernel developers use GPG keys when making changes to the kernel. For example, you can see that Linus Torvalds has one of his keys public available on a "keyserver" here: https://pgp.cs.uu.nl/stats/17762c4676e21cbb.html . 
+
+My gpg key can be found here:
+https://keyserver.ubuntu.com/
+
+If you search for 0xA8320558FF022DF5B6885B18FDF81434D7494435
+
+There are various numbers on these pages and talk about signatures - we'll talk about what that stuff means now. 
+
 * look at github use of pgp keys.
 * gpg vs gpg2
 * key vs subkey
