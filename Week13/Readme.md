@@ -126,11 +126,28 @@ gpg --output mypubkey.gpg --export EMAIL_ASSIGNED_TO_KEY
 You will see a dump of binary garbage. If you want a more portable format for the key, gpg will give you the key in ASCII format. 
 
 ```
-gpg --output mypubkey_ascii.gpg --export EMAIL_ASSIGNED_TO_KEY
+gpg --armor --output mypubkey_ascii.gpg --export EMAIL_ASSIGNED_TO_KEY
 ```
 
 Issues may arise with multiple keys per email or some other complication with your export, so instead you can use the key "fingerprint".
 
+You can get the fingerprint by typing either `gpg --list-keys` or `gpg --list-keys --keyid-format LONG` and look for an 8 byte hex number ( 16 ascii characters ).
+
+Then output your key 
+
+```
+gpg --armor --output mypubkey_ascii.gpg --export FINGERPRINT
+```
+
+Notice in the above examples that you can output either your sub key or your pub key. The output is the same for both the pub key and the subkey. Why?
+
+Looks to me like both the pub and sub keys are exported in this way:
+
+```
+gpg --list-packets mypubkey_ascii.gpg | grep "\(packet\|keyid\)"
+```
+
+Where did I get this --list-packets argument? Google. Why did I check the sub and pub keys and then try and find out why they are the same? Curiosity!! This is a beast of a tool and I personally will never understand how it works on a deeper than 'hand waving' level.  This tool is as much a mystery to me as it is to you, I just poke around the internet to see how to use it.
 
 > Question: On my machine when I run ` gpg --list-keys` I get:
 
