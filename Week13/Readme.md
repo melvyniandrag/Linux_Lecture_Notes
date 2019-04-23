@@ -103,6 +103,8 @@ You need to put your name and a bit of identifying information about yourself on
 
 You're going to want to choose RSA/RSA if it is available and use 4096 bits for your key length! The more bits the better, and I think 4096 is the upper bound now, but I'm not sure.
 
+### Inspect public keys
+
 Where are the keys stored? They are stored in the .gnupg directory. I believe they are generally stored in a binary format. Probably they are stored encrypted with the password you generated, though I'm not sure. I know how to get access to them though! To see all your keys type
 
 ```
@@ -186,14 +188,35 @@ what are you using?
 
 > Question: If there is some collision between key fingerprint AND the email i.e. if there are two keys on your machine with the same fingerprint and the same associated email what happens? I don't know the answer, this is an interesting research project. What's the probability of this happening? Is it > 0? i.e. is that even possible?
 
+###  Inspecting private keys
+
+```
+ gpg --export-secret-keys emailAddress
+ gpg --export-secret-keys fingerprint
+ gpg --armor --export-secret-keys email
+ gpg --armor --export-secret-keys fingerprint
+```
+You will do this is you want to take your key to another machine and use it there.
+
+```
+gpg --armor --export-secret-keys fingerprint > mysecretkey.asc
+cp mysecretkey.asc /my/thumb/drive
+# then take it to the other machine. I'll show you how to import the key in a bit. Jump ahead to the import key section if you want.
+```
+
+
 ## encrypt and decrypt
 You encrypt with public keys, not with private keys. THe public key is distributed freely to the public and anyone who wants to message you will encrypt with the public key. 
+
 
 
 
 ## digital sign and verify
 
 ## import other people's keys
+
+## import your own secret key from a thumbdrive
+Always back up your keys.
 
 ## keyserver
 I already told you where my key is, it's on the ubuntu keyserver. I've also uploaded my key to the mit keyserver, but the server is hit or miss if it's online. I always get a proxy error when using that server, and I've seen this issue documented at least on Reddit https://www.reddit.com/r/pgp/comments/aorc6a/mit_lookup_fails_with_502_and_503/ This would be a big pain if you had written some script that was making curl requests to the mit server and the server was down.
