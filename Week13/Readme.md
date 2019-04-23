@@ -68,6 +68,7 @@ $25 dollars and tell you lots about what's in the book. https://nostarch.com/pgp
 ## Using GPG
 
 ### Why should you know about GPG keys? 
+GPG keys are used for encrypting/decrypting data and verifying the authorship/provenance of email/data. These keys are industry standards and as we mentioned, they are backed by some serious mathematics.
 
 GPG keys are used in industry, especially in the opensource community. If you uploaded an ssh key to github for streamlining your git pushes, you may have noticed there was also an option for uploading your public gpg key. They explain here: https://help.github.com/en/articles/adding-a-new-gpg-key-to-your-github-account how to do it as well as which algorithms they support.
 Furthermore, Linux kernel developers use GPG keys when making changes to the kernel. For example, you can see that Linus Torvalds has one of his keys public available on a "keyserver" here: https://pgp.cs.uu.nl/stats/17762c4676e21cbb.html . 
@@ -79,14 +80,18 @@ If you search for 0xA8320558FF022DF5B6885B18FDF81434D7494435
 
 There are various numbers on these pages and talk about signatures - we'll talk about what that stuff means now. 
 
-* look at github use of pgp keys.
-* gpg vs gpg2
-* key vs subkey
+### key vs subkey
+Generally you should use the sub key for encryption/signing and not the public key. Read more in the man pages, or the summarized details in this link: https://superuser.com/questions/1371088/what-do-ssb-and-sec-mean-in-gpgs-output
+
 * encrypt and decrypt
 * digital sign and verify
 * import other people's keys
 * keyserver
 * quantum computers and microsoft visit
+
+
+### gpg vs gpg2
+I've always used gpg. There is also gpg2. Admittedly I should look into gpg2 and see what it's all about. There is a description of the differences here: https://superuser.com/questions/655246/are-gnupg-1-and-gnupg-2-compatible-with-each-other but I haven't had time to look into the differences, read the docs, and make a choice if gpg2 is right for me or not. If you're interested, you could look into it. As always, there are things I don't know. If you have the time to investigate and report back with information that would be great!
 
 ## Hash vulnerabilities
 We've talked about hashes several times in this class, and used md5sum and maybe discussed sha hashes, sha1 and sha256. I'd be remiss to not mention a hash vulnerability found in git a few years ago. What's the purpose of a hash? As we've seen, when you download software  - here's an example, the dragonfly bsd Operating System  https://www.dragonflybsd.org/download/ [ open link and show class ] - the software provider gives you some md5sum values to verify that the data is good. The idea is that you feed data into a hash algorithm and out comes some uniquely identifying information. But md5sum is only 128 bits! That means that there are only 2^128 different outputs possible! 
