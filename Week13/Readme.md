@@ -1,5 +1,7 @@
 # Computer Security, Encryption, Cybersecurity, etc.
 
+[ start loop test code in the background and don't mention what it is. Along the lines of "I'm just going to run this and don't you worry what it's doing."]
+
 When you hide a key under the doormat to your house you are doing what is called "Security through obscurity". Another example of security through obscurity is using a combination lock to secure your bicycle. https://en.wikipedia.org/wiki/Security_through_obscurity The assumption is that a nefarious party won't know the secret that you are trying to hide. In the case of your key hidden in the flower pot out back, you assume a home invader won't find the key. In the case of your bike, you're assuming the thief won't guess your three digit code - there are usually 40 digits on the front so there are 40*40*40 = not that many combinations to guess from ! Security like this either assumes your attacker is unmotivated, severely pressed for time, or has some other trivial circumstance preventing intrusion.
 
 ## ROT13
@@ -72,7 +74,21 @@ $25 dollars and tell you lots about what's in the book. https://nostarch.com/pgp
 * quantum computers and microsoft visit
 
 ## Hash vulnerabilities
-We've talked about hashes several times in this class, and used md5sum and maybe discussed sha hashes, sha1 and sha256. I'd be remiss to not mention a hash vulnerability found in git a few years ago. What's the purpose of a hash
+We've talked about hashes several times in this class, and used md5sum and maybe discussed sha hashes, sha1 and sha256. I'd be remiss to not mention a hash vulnerability found in git a few years ago. What's the purpose of a hash? As we've seen, when you download software  - here's an example, the dragonfly bsd Operating System  https://www.dragonflybsd.org/download/ [ open link and show class ] - the software provider gives you some md5sum values to verify that the data is good. The idea is that you feed data into a hash algorithm and out comes some uniquely identifying information. But md5sum is only 128 bits! That means that there are only 2^128 different outputs possible! 
+
+1. [128 zeros]
+2. 1 [127 zeros]
+3. 11 [126 zeros]
+4. 01 [126 zeros ] 
+5. etc.
+
+But there is more than 2^128 possible inputs to the algorithm. So there WILL be a hash collision. FOrtunately, the collision is so unlikely that we accept the risk. A genious hacker would provide an operating system image that contained malware, but generated the same hash, and thus you would 
+
+> Idea: Get source code for an operating system and write a virus. Then put that virus in various points of the code one by one. ( probably you want to write some software to automate this ). Compile the operating system and check the hash each time. When you get an image with the same hash, that contains your evil code, then you find a way to distribute the code in place of the original image and infect people. This would be a great little research project for someone here. As a baseline, how long does it take to loop from 1 to 2**128? 
+
+> Question about the last idea - whats an integer datatype that contains 128 bits? 128bits = 16 bytes, so there is none. 
+
+SEE_LOOP_TEST_CODE_NOW
 
 SHAttered reference: https://github.blog/2017-03-20-sha-1-collision-detection-on-github-com/
 
