@@ -59,6 +59,13 @@ Before moving on I'll give one more example of why ciphers are bad! A sophistica
 
 In any event, we've seen that ciphers are not so good for protecting sensitive data. Security through obscurity is generally not good. If anyone knows that you've simply rotated text by thirteen characters, they can decode your message. And, in some cases, they can decode even without knowing the scheme through a more subtle method like frequency analysis.
 
+Just one more cool idea - The Russian and Ukranian alphabets have 33 letters each, and most of the letters are the same, with the exception of 3. Obviously you could tell the difference between the languages by looking to see which letters appeared, but you could also run your frequency analysis and see which were the top 3 letters in the text and decide if the text was russian or ukranian in that way! 
+
+https://www.sttmedia.com/characterfrequency-russian
+https://www.sttmedia.com/characterfrequency-ukrainian
+
+just another example of the old "Many ways to skin a cat".
+
 ## History of PGP, GPG, OpenPGP, GnuPG.
 To learn a bit about pgp / gpg there is a great reference by a guy names "Michael Lucas" and the book is called "PGP & GPG email for the practical paranoid". In this ~200 page book he goes through the history of these tools and how to use them. I'm maybe going to save you
 $25 dollars and tell you lots about what's in the book. https://nostarch.com/pgp.htm It's a good enough refernce though, if you want to pick it up and have it on your shelf. Indeed, I'm going to tell you alot tonight, and you'll learn quite a bit, but reading this book on a lazy saturday would be a great way to solidify your knowledge.
@@ -96,7 +103,76 @@ You need to put your name and a bit of identifying information about yourself on
 
 You're going to want to choose RSA/RSA if it is available and use 4096 bits for your key length! The more bits the better, and I think 4096 is the upper bound now, but I'm not sure.
 
+Where are the keys stored? They are stored in the .gnupg directory. I believe they are generally stored in a binary format. Probably they are stored encrypted with the password you generated, though I'm not sure. I know how to get access to them though! To see all your keys type
+
+```
+gpg --list-keys
+```
+
+or
+
+```
+gpg --list-secret-keys
+```
+
+so far as I can tell these options are the same, though I'm not sure. The output looks the same to me on my debian 9 vm at work - I haven't yet tested the lecture notes out on the google cloud machine. Ultimately We'd have to look at the source  code and read documentation to verify that these options were the same. If there is time left in class we can look for the code and grep for "list-\*-keys.
+
+If you want to see your public key you type
+
+```
+gpg --output mypubkey.gpg --export EMAIL_ASSIGNED_TO_KEY 
+```
+
+You will see a dump of binary garbage. If you want a more portable format for the key, gpg will give you the key in ASCII format. 
+
+```
+gpg --output mypubkey_ascii.gpg --export EMAIL_ASSIGNED_TO_KEY
+```
+
+Issues may arise with multiple keys per email or some other complication with your export, so instead you can use the key "fingerprint".
+
+
+> Question: On my machine when I run ` gpg --list-keys` I get:
+
+```
+mdrag@debian:~/gpg_test$ gpg --list-keys --keyid-format LONG
+/home/mdrag/.gnupg/pubring.kbx
+------------------------------
+pub   rsa4096/FDF81434D7494435 2019-04-23 [SC] [expires: 2020-04-21]
+      A8320558FF022DF5B6885B18FDF81434D7494435
+uid                 [ultimate] Melvyn Ian Drag (Embedded Software Engineer, C++, Python, Linux & More) <melvyniandrag@gmail.com>
+sub   rsa4096/130F6ED002B64F3E 2019-04-23 [E] [expires: 2020-04-21]
+```
+after 'pub' I see rsa4096/FINGERPRINT and below it I see a 20 byte fingerprint. This corresponds to how many bits? [ wait for answer ] 160! Indeed that is to be expected. gpg uses a 160 bit sha-1 hash for fingerprinting your key. It generates a short, unique identifier for the key. It also shows you an 8 byte truncated version of that hash. Why? I'm not sure of the details. All of the tutorials I've seen show only the 8 byte fingerprint, but this version shows the 20 byte one as well. Why? Does your version show the 20 byte version too? Also, my "--list-keys" without the "keyid-format" doesn't even show the fingerprint as the tutorials say itshould:
+https://www.debuntu.org/how-to-importexport-gpg-key-pair/
+
+BTW I'm on:
+```
+mdrag@debian:~/gpg_test$ gpg --version
+gpg (GnuPG) 2.1.18
+libgcrypt 1.7.6-beta
+Copyright (C) 2017 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <https://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+
+Home: /home/mdrag/.gnupg
+Supported algorithms:
+Pubkey: RSA, ELG, DSA, ECDH, ECDSA, EDDSA
+Cipher: IDEA, 3DES, CAST5, BLOWFISH, AES, AES192, AES256, TWOFISH,
+        CAMELLIA128, CAMELLIA192, CAMELLIA256
+Hash: SHA1, RIPEMD160, SHA256, SHA384, SHA512, SHA224
+Compression: Uncompressed, ZIP, ZLIB, BZIP2
+```
+
+what are you using?
+
+> Question: If there is some collision between key fingerprint AND the email i.e. if there are two keys on your machine with the same fingerprint and the same associated email what happens? I don't know the answer, this is an interesting research project. What's the probability of this happening? Is it > 0? i.e. is that even possible?
+
 ## encrypt and decrypt
+You encrypt with public keys, not with private keys. THe public key is distributed freely to the public and anyone who wants to message you will encrypt with the public key. 
+
+
 
 ## digital sign and verify
 
