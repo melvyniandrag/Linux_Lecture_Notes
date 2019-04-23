@@ -83,11 +83,29 @@ There are various numbers on these pages and talk about signatures - we'll talk 
 ### key vs subkey
 Generally you should use the sub key for encryption/signing and not the public key. Read more in the man pages, or the summarized details in this link: https://superuser.com/questions/1371088/what-do-ssb-and-sec-mean-in-gpgs-output
 
-* encrypt and decrypt
-* digital sign and verify
-* import other people's keys
-* keyserver
-* quantum computers and microsoft visit
+## generating keys
+Enough talk, let's do something now!! To generate a key you use the gpg command line tool. The tool will generate a public key and a private key - you must guard your private key with your life!! This key can be used for decrypting messages encrypted with your public key - but it can also be used to forge your signature! And the tech world generally views this signature as being an indisputable means of demonstrating that YOU are the author / creator of somethign signed with that key. So if some message on the internet shows up signed with your key, and this is an unsavory kind of message, you could be in deep trouble or at best have to jump through hoops to demonstrate that your machine was hacked and your private key taken.
+
+```
+ gpg --full-generate-key
+```
+
+will generate keys. It will ask you for some information. You should add a password to your key for extra security. Take time now to write your password somewhere safe and store it away. Don't ever lose this password, or you won't be able to recover your key later. This could be a security problem. At the very least you'll have a dead key floating out in the wild confusing everyone.
+
+You need to put your name and a bit of identifying information about yourself on the key, so in case someone finds two keys with the name "Melvyn  Ian DRag" on them, they'll know the one they want is the one from the embedded Linux developer who loves dogs and not from the React Native expert who loves cats. Just a few identifying words!
+
+You're going to want to choose RSA/RSA if it is available and use 4096 bits for your key length! The more bits the better, and I think 4096 is the upper bound now, but I'm not sure.
+
+## encrypt and decrypt
+
+## digital sign and verify
+
+## import other people's keys
+
+## keyserver
+I already told you where my key is, it's on the ubuntu keyserver. I've also uploaded my key to the mit keyserver, but the server is hit or miss if it's online. I always get a proxy error when using that server, and I've seen this issue documented at least on Reddit https://www.reddit.com/r/pgp/comments/aorc6a/mit_lookup_fails_with_502_and_503/ This would be a big pain if you had written some script that was making curl requests to the mit server and the server was down.
+
+ ## quantum computers and microsoft visit
 
 
 ### gpg vs gpg2
@@ -110,7 +128,21 @@ But there is more than 2^128 possible inputs to the algorithm. So there WILL be 
 
 SEE_LOOP_TEST_CODE_NOW
 
+HAve a look at this website too: https://shattered.io/
+
+Show in class how two pdfs generate the same sha1 hash.
+
+```
+wget [ link to pdf1 ]
+wget [ link to pdf2 ]
+sha1sum pdf1.pdf
+sha1sum pdf2.pdf
+```
+
+make sure to show that the pdfs are differnt in class, yet generate the same sum. Scroll through the website and show how many systems are affected by this! git, gpg, etc.
+
 SHAttered reference: https://github.blog/2017-03-20-sha-1-collision-detection-on-github-com/
 
 ## References
 Michael W. Lucas PGP&GPG - email for the practical paranoid
+Cool article about tr - https://www.linuxjournal.com/article/2563
