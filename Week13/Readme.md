@@ -341,7 +341,37 @@ gpg --import revocationCert.asc
 
 and you upload it to whatever keyservers hold your public key. Now your private key is revoked. You save this in case a terrorist gets access to your keys and goes all around saying some vile thing online you can revoke your key.
 
-What happens if you try to a
+What happens if you try to use a revoked key to encrypt?
+
+```
+#works
+$gpg --armor --output endian.gpg --recipient hughlie@hughlie.com --encrypt endianness.cpp
+$gpg --import revocation.asc
+#gonna fail
+$gpg --armor --output endian.gpg --recipient hughlie@hughlie.com --encrypt endianness.cpp
+gpg: hughlie@hughlie.com: skipped: No public key
+gpg: endianness.cpp: encryption failed: No public key
+```
+
+Does decryption work? (yes, decryption still works)
+```
+$ gpg --output afterRevocation.cpp --decrypt endian.gpg 
+gpg: Note: key has been revoked
+gpg: reason for revocation: No reason specified
+gpg: revocation comment: l
+gpg: encrypted with 1024-bit RSA key, ID FDEC8D1567FF96D0, created 2019-04-24
+      "hughlie (hughlie) <hughlie@hughlie.com>"
+$ cat afterRevocation.cpp 
+#include <cstdint>
+#include <cstdio>
+
+int main(){
+        uint32_t num = 1;
+        char * numAddr = (char*)&num;
+        for( size_t i = 0; i < sizeof(num); ++i)
+                printf("0x%02X\n", numAddr[i]);
+}      
+```
 
 references:
 1. https://www.gnupg.org/gph/en/manual/c14.html
@@ -349,7 +379,7 @@ references:
 ## digital sign and verify
 
 ## import your own secret key from a thumbdrive
-Always back up your keys.
+Always back up your keys. Save your ascii private key on a thumbdrive and hide it. You can import it on another machine.
 
 ## keyserver
 I already told you where my key is, it's on the ubuntu keyserver. I've also uploaded my key to the mit keyserver, but the server is hit or miss if it's online. I always get a proxy error when using that server, and I've seen this issue documented at least on Reddit https://www.reddit.com/r/pgp/comments/aorc6a/mit_lookup_fails_with_502_and_503/ This would be a big pain if you had written some script that was making curl requests to the mit server and the server was down.
