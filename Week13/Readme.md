@@ -303,6 +303,18 @@ $gpg --armor --output melvyndrag.encryptedMsg --encrypt --recipient melvyniandra
 
 Now I'll decrypt a message or two and then we'll move on. If there is time I'll decrypt more messages at the end of class. 
 
+### Exchange a message with a classmate
+Find a friend in class and exchange encrypted messages to each other. Use the public keys you put on github earlier. I told you there were two ways to get keys. I showed you the keyserver method, now you're going to import your friend's key using the ascii file he or she put on github.
+
+```
+# Do the following, but dont get my key, get your friends key
+$wget https://github.com/melvyniandrag/Linux_Lecture_Notes/blob/master/Week13/melvyniandrag.gpg 
+$gpg --import keyfile.gpg
+# now you can encrypt a message
+```
+
+Get the message to your friend however you want. Make a pr on their github repo seems like a good idea.
+
 ## digital sign and verify
 
 ## import your own secret key from a thumbdrive
@@ -310,8 +322,6 @@ Always back up your keys.
 
 ## keyserver
 I already told you where my key is, it's on the ubuntu keyserver. I've also uploaded my key to the mit keyserver, but the server is hit or miss if it's online. I always get a proxy error when using that server, and I've seen this issue documented at least on Reddit https://www.reddit.com/r/pgp/comments/aorc6a/mit_lookup_fails_with_502_and_503/ This would be a big pain if you had written some script that was making curl requests to the mit server and the server was down.
-
- ## quantum computers and microsoft visit
 
 
 ### gpg vs gpg2
@@ -336,6 +346,12 @@ SEE_LOOP_TEST_CODE_NOW
 
 I started running this code when we came into class, that was some time ago, and you will notice that it is still going. Indeed, this code will take a long time to finish. Look at your hands. If I were to let this code run to completion, and assuming the cloud machine stayed online that long, and the power plant never failed, and the computer never encountered a seg fault and needed to restart - all the flesh would be gone from your fingers, byt that time we will all be dead and long forgotten. Humanity may have ceased to exist by that point. An absolutely horrifying length of time to think about. Note that this for loop I've written is not even doing any work, it is just going through a loop. If I did a single addition in the loop the code would take twice as long. You cannot brute force an md5sum on current hardware. There are rumors of something to come in the future however . . . but lets not get off topic just yet.
 
+ ## quantum computers and microsoft visit
+I went to microsoft and learned about some cool research theyre doing ( blasphemy in a Linux class ). They are working on a quantum computer. Allegedly you can use it on azure and play with their quantum language called Q# ( like c# = microsoft java, f# = microsoft functional lang, they also have q# = microsoft quantum lang ). Not sure if its a real machine or if its an emulator of how they expect a quantum computer to work. These computers will work using quantum mechanical phenomena to do processing instead of electrical bits used by the current generation of computers. I'm not sure if this is still theoretical or if the quantum computer is going to be a real thing. Theres a lot of BS in the tech world.
+
+They say you can rent a machine on azure( microsoft version of google cloud / AWS ). They said there is a 200 dollar credit. I'm not interested, but maybe you are. I mention this because these machines are purported to beunimaginably faster than modern computers. You see that the loop code to explore all combos of md5sums to brute force an md5sum is too slow. But on a quantum machine these brute force attacks might work and then all this gpg/ssh/md5sum/etc security you've learned in this class will be useless. Crazy to think about. What algorithms will come next? Are there any algorithms that will be resilient?
+
+## back to shattered
 HAve a look at this website too: https://shattered.io/
 
 Show in class how two pdfs generate the same sha1 hash.
