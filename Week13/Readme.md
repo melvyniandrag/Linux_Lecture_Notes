@@ -212,14 +212,87 @@ cp mysecretkey.asc /my/thumb/drive
 
 
 ## encrypt and decrypt
-You encrypt with public keys, not with private keys. THe public key is distributed freely to the public and anyone who wants to message you will encrypt with the public key. 
+You encrypt with public keys, not with private keys. THe public key is distributed freely to the public and anyone who wants to message you will encrypt with the public key. The common imagery for thinking of a public key is an open safe that only you know the combo to. Anyone can put stuff in your safe. They close it ( encrypt it ) and then no one can open the safe but you ( with your private key ).
 
+We will first test our encryption using our own public / private keys. Make some text. I'll write a little poem.
 
+```
+$cat robertFrost.txt
+Whose woods these are I think I know
+His house is in the valley though
+He will not see me stopping here
+To watch his woods fill up with snow
 
+My little horse must think it queer 
+To stop without a farmhouse near
+Between the woods and frosty lake
+The darkest evening of the year
+```
+
+I think that's right. Then I'll encrypt it.
+
+```
+$gpg --output frost.encrypted --encrypt --recipient YourEmailHere robertFrost.txt
+$cat frost.encrypted
+#lots of binary junk
+```
+
+As with the keys you see by default the encryption outputs binary data. This is okay, but there may be certain media that interpret specific bytes as meaning something special, so it's probably safer to output ascii data. You probably remember how to do that!
+
+```
+$gpg --output frost.asciiEncrypted --encrypt --recipient YourEmailHere robertFrost.txt
+$cat frost.asciiEncrypted
+-----BEGIN PGP MESSAGE-----
+LoT5 0F AsciI DaTa h=r= 
+AmiritE
+-----END PGP MESSAGE-----
+```
+It's pretty simple why you would want ASCII Data and not binary data. But maybe that only becomes obvious with experience, you may not have worked with a transport medium that would misbehave if fed certain binary data. [ Would be good to come up with a demo here maybe. Might be a waste of time.]
+
+> Question - what ASCII characters does gpg output with the armor option? It obviously cant use the full set of ASCII characters, because things like "\f" and "\a" aren't printable. I haven't seen any ? or ! or _ in the output either, but I haven't really looked.
+
+As before you can alse encrypt by using the fingerprint. Now I BELIEVE that gpg by default uses the subkey associated with the primary key to encrypt. I don't know what would happen if I generated multiple subkeys. I suppose I could find a way to delete my master key and leave behind only the subkey on my machine. In the link below it looks like gpg chooses the newest subkey for encryption, but I haven't verified this.
+
+>  Question - someone explain the above to me, I'm not entirely sure about what happens. It's explained here but I haven't had time to verify everything they say on this page: https://wiki.debian.org/Subkeys. At a glance it looks to me like gpg will decide which key to use in each circumstance so you don't have to worry about it. Again, I'm not sure and if anyone wants to put together a tutorial to explain to me that would be great. I'll try to know allll the details by next semester.
+
+In any event, now that you have the message encrypted you can decrypt it.
+
+```
+$gpg --output frost.decrypted --decrypt frost.asciiEncrypted
+$cat frost.decrypted
+The expected data is here
+```
+
+But so far we've only encrypted/decrypted messages to ourselves using our own keys. Now you will send an encrypted message to me.
+For this you need my public key. There are two ways to do this - I could give you my keyfile, or you could get it from a keyserver.
+First we'll do it the keyserver way. You need to give gpg internet access by installing a package.
+
+```
+$sudo apt-get install dirmngr --install-recommends
+$gpg --list-keys
+# my key isn't on your keyring
+$gpg --keyserver https://keyserver.ubuntu.com --recv-keys 0xA8320558FF022DF5B6885B18FDF81434D7494435
+$gpg --list-keys
+# now it is!
+```
+[Go to the keyserver and click on the fingerprint links to show that the ASCII version of the keys are stored online]
+
+Your mission now is to write me a message, encrypt it, and then make a PR on github featuring this file:
+
+```Linux_Lecture_Notes/Week13/EncryptedMessages/YourName.encryptedMsg```
+
+I'll show you how first.
+
+```
+$cat myCoolMsg
+Did you know that plant cells have cell walls, but animal cells don't?
+$gpg --armor --output melvyndrag.encryptedMsg --encrypt --recipient melvyniandrag@gmail.com myCoolMsg
+#Then go to github.com and paste the content of the encrypted message in the proper spot.
+```
+
+Now I'll decrypt a message or two and then we'll move on. If there is time I'll decrypt more messages at the end of class. 
 
 ## digital sign and verify
-
-## import other people's keys
 
 ## import your own secret key from a thumbdrive
 Always back up your keys.
