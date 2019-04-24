@@ -380,10 +380,10 @@ references:
 
 ## import your own secret key from a thumbdrive
 Always back up your keys. Save your ascii private key on a thumbdrive and hide it. You can import it on another machine.
+Read this if you want more info: https://makandracards.com/makandra/37763-gpg-extract-private-key-and-import-on-different-machine
 
 ## keyserver
 I already told you where my key is, it's on the ubuntu keyserver. I've also uploaded my key to the mit keyserver, but the server is hit or miss if it's online. I always get a proxy error when using that server, and I've seen this issue documented at least on Reddit https://www.reddit.com/r/pgp/comments/aorc6a/mit_lookup_fails_with_502_and_503/ This would be a big pain if you had written some script that was making curl requests to the mit server and the server was down.
-
 
 ### gpg vs gpg2
 I've always used gpg. There is also gpg2. Admittedly I should look into gpg2 and see what it's all about. There is a description of the differences here: https://superuser.com/questions/655246/are-gnupg-1-and-gnupg-2-compatible-with-each-other but I haven't had time to look into the differences, read the docs, and make a choice if gpg2 is right for me or not. If you're interested, you could look into it. As always, there are things I don't know. If you have the time to investigate and report back with information that would be great!
