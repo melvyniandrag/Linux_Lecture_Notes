@@ -87,6 +87,8 @@ If you search for 0xA8320558FF022DF5B6885B18FDF81434D7494435
 
 There are various numbers on these pages and talk about signatures - we'll talk about what that stuff means now. 
 
+# TAKE A BREAK HERE
+
 ### key vs subkey
 Generally you should use the sub key for encryption/signing and not the public key. Read more in the man pages, or the summarized details in this link: https://superuser.com/questions/1371088/what-do-ssb-and-sec-mean-in-gpgs-output
 
