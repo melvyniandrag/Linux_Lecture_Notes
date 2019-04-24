@@ -196,6 +196,11 @@ what are you using?
 
 > Question: If there is some collision between key fingerprint AND the email i.e. if there are two keys on your machine with the same fingerprint and the same associated email what happens? I don't know the answer, this is an interesting research project. What's the probability of this happening? Is it > 0? i.e. is that even possible?
 
+
+### Getting your key out there [ One method ]
+
+I've shown you that Linux developers and open source folks usually have there GPG keys out in the wild for you to be able to download and use. Many people put them on keyservers, like where I put mine. But we are just playing around with these gpg keys now and I imagine you aren't very comfortable with the keys, what they are, what to do with them yet, so we're going to put the keys in a less permanent place than a keyserver, you can just put your ascii pub key on github in some file, in a new repo if you want or in your branch of the class repo. We'll use this later.
+
 ###  Inspecting private keys
 
 ```
