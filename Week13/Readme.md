@@ -376,7 +376,24 @@ int main(){
 references:
 1. https://www.gnupg.org/gph/en/manual/c14.html
 2. https://lists.gnupg.org/pipermail/gnupg-users/2003-December/020841.html
+
 ## digital sign and verify
+Apart from encrypting/decrypting, the other main use of pgp is generating documents whose provenance is irrepudiable - that there is no doubt that you generated the docuemnt. You do this by encryptijng a document with your private key so that people can use your public key to decrypt it. If you encrypt a document with a private key, the ONLY way to decrypt it is with the corresponding public key, that's why this works. 
+
+To sign:
+```
+gpg --armor --output doc.signed --sign hello_world.txt 
+```
+
+To decrypt and see who it's from :
+```
+gpg --output decryptedMsg --decrypt doc.signed
+```
+
+You can try decrypting the secret message I put on github here:
+https://github.com/melvyniandrag/Linux_Lecture_Notes/blob/master/Week13/SignedByMelvyn.encrypted
+
+by using my public key.
 
 ## import your own secret key from a thumbdrive
 Always back up your keys. Save your ascii private key on a thumbdrive and hide it. You can import it on another machine.
