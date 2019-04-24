@@ -221,6 +221,14 @@ cp mysecretkey.asc /my/thumb/drive
 # then take it to the other machine. I'll show you how to import the key in a bit. Jump ahead to the import key section if you want.
 ```
 
+## Using `stress` while generating keys
+To generate a key gpg uses some randomness in your computer to feed the key generator. I was having a hard time generating enough entropy with my keyboard, so I used the stress command. 
+
+```
+$sudo apt-get install stress
+$sudo stress --cpu 4 --io 3 --vm 2 --vm-bytes 256M --timeout 400s
+```
+You'll need a separate tmux pane or another ssh window to run this while the generator is using the entropy.
 
 ## encrypt and decrypt
 You encrypt with public keys, not with private keys. THe public key is distributed freely to the public and anyone who wants to message you will encrypt with the public key. The common imagery for thinking of a public key is an open safe that only you know the combo to. Anyone can put stuff in your safe. They close it ( encrypt it ) and then no one can open the safe but you ( with your private key ).
@@ -315,6 +323,29 @@ $gpg --import keyfile.gpg
 
 Get the message to your friend however you want. Make a pr on their github repo seems like a good idea.
 
+### Weird!
+Encryption with gpg is nondeterminitstic. That's to say, if you encrypt the same file twice with the same key, the output is different. Depending on how awake you are right now, that may or may not surprise you. Try encrypting a file twice with --armor and then look at the output. It will be different. If you want to know why this is the case, you need to study a bit of cryptography. You need to know about random initial values, salts, and padding.
+
+### Revocation certificate
+[IMPORTANT!!!!!!!!!] Whenever you generate a keypair you need to generate a revocation certificate. You use this to revoke your private key in the event that it is compromised. You generate a revocation cert with:
+
+```
+gpg --output revocationCert.asc --gen-revoke EMAIL_OR_FINGERPRINT_OF_KEY
+```
+
+You will save this cert to a thumbdrive and hide it somewhere very very safe. Then if your private key becomes compromised you import this into your keyring with
+
+```
+gpg --import revocationCert.asc
+```
+
+and you upload it to whatever keyservers hold your public key. Now your private key is revoked. You save this in case a terrorist gets access to your keys and goes all around saying some vile thing online you can revoke your key.
+
+What happens if you try to a
+
+references:
+1. https://www.gnupg.org/gph/en/manual/c14.html
+2. https://lists.gnupg.org/pipermail/gnupg-users/2003-December/020841.html
 ## digital sign and verify
 
 ## import your own secret key from a thumbdrive
@@ -371,7 +402,13 @@ SHAttered reference: https://github.blog/2017-03-20-sha-1-collision-detection-on
 
 ## Let's have a quick key-signing party!
 
-You all can organize these parties here at NJCU! I'd expect an invite if you're going to do one though! There may not be enough people around here who appreciate the sanctity of the key signing party, an
+You all can organize these parties here at NJCU! I'd expect an invite if you're going to do one though! There may not be enough people around here who appreciate the sanctity of the key signing party, maybe you could find a key signing event in nyc.
+
+How to sign keys.
+https://www.gnupg.org/gph/en/manual/x56.html
+
+Example of a keysigning party, what it looks like, what you do.:
+https://www.youtube.com/watch?v=JrciSbHhpBo&t=413s
 
 ## UNRELATED TO CYBER SECURITY
 Alot of questions here about how to make it industry. Its not that hard, just keep studying. Get a degree, get an entry level job, and move up the ladder. Know how to do things. Know a couple of languages. Know algorithms and datastructures. Work on an open source project if you have time. Go to local user groups.
