@@ -446,6 +446,9 @@ make sure to show that the pdfs are differnt in class, yet generate the same sum
 SHAttered reference: https://github.blog/2017-03-20-sha-1-collision-detection-on-github-com/
 
 ## The web of trust
+Anyone can just generate a key. PGP is based on the web of trust. Key users sign each other's keys to validate that they trust each other's keys. Look at all of the signatures on Linus Torvalds' key here: https://pgp.cs.uu.nl/stats/79be3e4300411886.html
+
+He has 87 people who verified his key and attached their name to the key. The names on that list are from fairly important people. You'll see many well known kernel contributors and you'll see linux.intel, redhat, mit, vmware and other prominent organizations in the domain names of te signer's emails.
 
 ## Let's have a quick key-signing party!
 
@@ -456,6 +459,12 @@ https://www.gnupg.org/gph/en/manual/x56.html
 
 Example of a keysigning party, what it looks like, what you do.:
 https://www.youtube.com/watch?v=JrciSbHhpBo&t=413s
+
+Essentially get a bunch of people with their identification and key fingerprints together to verify each others' identities. THen they later sign each other's keys when at home using iinformation they wrote on paper. You don't have to sign the keys of people whose identity you doubt. This is how the web of trust is built.
+
+>Question: The term "trust path" is used in pgp circles. What does it mean?
+
+You use the `--sign-key` option to sign a key. You can google it for more information. I don't want to sign any of your keys tonight or have you sign mine because I don't know how serious you are about maintaining your key, I don't know if you are going to properly take care of your keys, this is your first brush with pgp. I'll sign it if you want, but I imagine some of you aren't going to use your key. If you want a signature, talk to me another day, shoot me an email.
 
 ## UNRELATED TO CYBER SECURITY
 Alot of questions here about how to make it industry. Its not that hard, just keep studying. Get a degree, get an entry level job, and move up the ladder. Know how to do things. Know a couple of languages. Know algorithms and datastructures. Work on an open source project if you have time. Go to local user groups.
