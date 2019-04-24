@@ -97,6 +97,12 @@ Enough talk, let's do something now!! To generate a key you use the gpg command 
  gpg --full-generate-key
 ```
 
+This is on gpg v2.1, if you have gpg version 1.4 you will instead use the option 
+
+```
+gpg  --gen-key
+```
+
 will generate keys. It will ask you for some information. You should add a password to your key for extra security. Take time now to write your password somewhere safe and store it away. Don't ever lose this password, or you won't be able to recover your key later. This could be a security problem. At the very least you'll have a dead key floating out in the wild confusing everyone.
 
 You need to put your name and a bit of identifying information about yourself on the key, so in case someone finds two keys with the name "Melvyn  Ian DRag" on them, they'll know the one they want is the one from the embedded Linux developer who loves dogs and not from the React Native expert who loves cats. Just a few identifying words!
@@ -244,6 +250,8 @@ But there is more than 2^128 possible inputs to the algorithm. So there WILL be 
 
 SEE_LOOP_TEST_CODE_NOW
 
+I started running this code when we came into class, that was some time ago, and you will notice that it is still going. Indeed, this code will take a long time to finish. Look at your hands. If I were to let this code run to completion, and assuming the cloud machine stayed online that long, and the power plant never failed, and the computer never encountered a seg fault and needed to restart - all the flesh would be gone from your fingers, byt that time we will all be dead and long forgotten. Humanity may have ceased to exist by that point. An absolutely horrifying length of time to think about. Note that this for loop I've written is not even doing any work, it is just going through a loop. If I did a single addition in the loop the code would take twice as long. You cannot brute force an md5sum on current hardware. There are rumors of something to come in the future however . . . but lets not get off topic just yet.
+
 HAve a look at this website too: https://shattered.io/
 
 Show in class how two pdfs generate the same sha1 hash.
@@ -258,6 +266,12 @@ sha1sum pdf2.pdf
 make sure to show that the pdfs are differnt in class, yet generate the same sum. Scroll through the website and show how many systems are affected by this! git, gpg, etc.
 
 SHAttered reference: https://github.blog/2017-03-20-sha-1-collision-detection-on-github-com/
+
+## The web of trust
+
+## Let's have a quick key-signing party!
+
+You all can organize these parties here at NJCU! I'd expect an invite if you're going to do one though! There may not be enough people around here who appreciate the sanctity of the key signing party, an
 
 ## UNRELATED TO CYBER SECURITY
 Alot of questions here about how to make it industry. Its not that hard, just keep studying. Get a degree, get an entry level job, and move up the ladder. Know how to do things. Know a couple of languages. Know algorithms and datastructures. Work on an open source project if you have time. Go to local user groups.
