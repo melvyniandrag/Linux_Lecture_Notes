@@ -201,6 +201,10 @@ what are you using?
 
 I've shown you that Linux developers and open source folks usually have there GPG keys out in the wild for you to be able to download and use. Many people put them on keyservers, like where I put mine. But we are just playing around with these gpg keys now and I imagine you aren't very comfortable with the keys, what they are, what to do with them yet, so we're going to put the keys in a less permanent place than a keyserver, you can just put your ascii pub key on github in some file, in a new repo if you want or in your branch of the class repo. We'll use this later.
 
+For example, mine is here: https://github.com/melvyniandrag/Linux_Lecture_Notes/blob/master/Week13/melvyniandrag.gpg
+
+Wait for everyone to get their key online.
+
 ###  Inspecting private keys
 
 ```
