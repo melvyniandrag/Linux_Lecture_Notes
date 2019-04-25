@@ -70,7 +70,13 @@ just another example of the old "Many ways to skin a cat".
 To learn a bit about pgp / gpg there is a great reference by a guy names "Michael Lucas" and the book is called "PGP & GPG email for the practical paranoid". In this ~200 page book he goes through the history of these tools and how to use them. I'm maybe going to save you
 $25 dollars and tell you lots about what's in the book. https://nostarch.com/pgp.htm It's a good enough refernce though, if you want to pick it up and have it on your shelf. Indeed, I'm going to tell you alot tonight, and you'll learn quite a bit, but reading this book on a lazy saturday would be a great way to solidify your knowledge.
 
-[ TODO Fill this in with a few cool facts from the book ]
+https://www.goanywhere.com/blog/2013/07/18/openpgp-pgp-gpg-difference
+
+Published in book form to avoid legal restrictions on encryption software. There was no way to censor a book with us law. But the decision could be appealed in the future. A similar stunt was pulled by famous cryptogrpaher dan bernstein when he published an Elliptic Curve Diffie Hellman algorithm via twitter: https://twitter.com/tweetnacl https://tweetnacl.cr.yp.to/
+
+https://www.openpgp.org/
+
+https://www.reddit.com/r/cryptography/comments/5z3r97/can_we_use_asic_hardware_to_brute_force_encryption/
 
 ## Using GPG
 
@@ -86,6 +92,8 @@ https://keyserver.ubuntu.com/
 If you search for 0xA8320558FF022DF5B6885B18FDF81434D7494435
 
 There are various numbers on these pages and talk about signatures - we'll talk about what that stuff means now. 
+
+
 
 # TAKE A BREAK HERE
 
