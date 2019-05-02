@@ -1,3 +1,5 @@
-Prepare for final exam. We will set up a gitserver in class.
+https://www.digitalocean.com/community/tutorials/how-to-set-up-a-private-git-server-on-a-vpshttps://www.digitalocean.com/community/tutorials/how-to-set-up-a-private-git-server-on-a-vps
 
-Have students fill out the class evaluation
+Not Petya
+
+Docker
